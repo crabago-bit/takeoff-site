@@ -158,7 +158,7 @@ function renderList() {
       <div><div class="subj">${esc(o.org_name)}</div>
         <div class="meta">${o.members ?? 0} member${o.members === 1 ? "" : "s"} · created ${o.org_created ? fmtD(o.org_created) : "—"}</div></div>
       <span class="pill ${p.cls}">${esc(p.label)}</span>
-      <span class="meta">seats ${o.seats_used ?? 0}/${o.seats ?? "—"} used</span>
+      <span class="meta">${o.plan ? `${o.seats_used ?? 0}/${o.seats ?? "—"} seats assigned` : "seat licensing not set up"}</span>
       <span class="meta">${o.current_period_end ? "ends " + fmtD(o.current_period_end) : ""}</span>
     </div>`;
   }).join("") : `<p class="muted">No organizations yet.</p>`;
@@ -219,7 +219,7 @@ async function openOrg(id) {
         <button class="fbtn" id="qa-susp">Suspend</button>
       </div>
 
-      <h3>Seats — ${active.length}/${o.seats ?? "—"} used</h3>
+      <h3>Seats — ${active.length} of ${o.seats ?? "—"} assigned</h3>
       ${seatErr ? `<p class="err">${esc(seatErr.message)}</p>` : ""}
       <div id="seatlist">
         ${active.map(seatRow).join("") || `<p class="muted">No active seats.</p>`}
