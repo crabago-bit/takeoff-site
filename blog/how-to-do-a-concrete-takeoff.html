@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Do a Concrete Takeoff: Slabs, Footings, Rebar, and the Order Math — Groundwork Takeoff</title>
+<meta name="description" content="A practical concrete takeoff method: slabs (SF × depth → CY), footings by the linear foot, piers, rebar weight from spacing, vapor barrier, edge forms, waste, and order rounding — with a worked 30×40 slab example.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/blog/how-to-do-a-concrete-takeoff.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Do a Concrete Takeoff: Slabs, Footings, Rebar, and the Order Math">
+<meta property="og:description" content="Slabs to CY, footings by the LF, rebar weight from spacing, vapor barrier, edge forms, waste, and order rounding — worked example included.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/blog/how-to-do-a-concrete-takeoff.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=3">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Do a Concrete Takeoff: Slabs, Footings, Rebar, and the Order Math","datePublished":"2026-04-07","author":{"@type":"Organization","name":"Groundwork Takeoff"}}
+</script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="./">Blog</a>
+      <a href="../support.html">Support</a>
+      <a class="nav-cta" href="https://takeoff.warriorhi.com">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(30px,4vw,50px);">
+  <div class="hero-glow"></div>
+  <div class="article-head wrap">
+    <span class="eyebrow reveal">How-to · April 7, 2026</span>
+    <h1 class="reveal" style="font-size:clamp(34px,5vw,58px);letter-spacing:-0.03em;line-height:1.08;font-weight:800;">How to do a concrete takeoff</h1>
+    <p class="subhead reveal" style="--d:.1s;font-size:clamp(17px,1.8vw,21px);">Concrete is measured flat but bought by the cubic yard, and everything around it — rebar, barrier, forms — follows its own unit. Here's the full method, slab to order ticket.</p>
+  </div>
+</header>
+
+<article class="article" style="padding-bottom:clamp(80px,10vw,130px);">
+  <div class="article-body">
+    <h2>Read the structural set first</h2>
+    <p>Concrete quantities live on the structural drawings: foundation plans for footing and pier layout, slab plans for extents and thicknesses, sections and details for footing dimensions and reinforcing, and the general notes for concrete strength, rebar laps, and cover. The architectural set tells you where slabs are, but the structural set tells you what's in them. Take off each element type separately — slab on grade, footings, piers, walls — because each has its own unit, its own waste behavior, and its own place on the order.</p>
+    <p>As always, verify the scale on every sheet against a printed dimension before measuring anything. Foundation plans are frequent victims of half-size printing, and a half-size sheet quietly turns a 15-yard pour into a 120-yard disaster (lengths double, areas quadruple, volumes octuple).</p>
+
+    <h2>Slabs: SF × depth → CY</h2>
+    <p>Measure the slab area in square feet, multiply by thickness in feet, divide by 27 to get cubic yards:</p>
+    <p style="text-align:center;"><strong>CY = (SF × depth in feet) ÷ 27</strong></p>
+    <p>A 4&quot; slab is 0.333', a 6&quot; slab is 0.5'. Watch for thickened areas — many "4-inch slabs" carry thickened edges, equipment pads, or interior thickened strips under bearing walls. Take those off separately as additional volume; they're small individually and real money collectively.</p>
+
+    <h2>Footings: LF × cross-section</h2>
+    <p>Continuous footings are a linear measurement times a cross-sectional area. A 24&quot; × 12&quot; footing carries 2.0 SF of section, so every linear foot holds 2 CF — 0.074 CY per LF. Measure the footing centerline on the foundation plan, group by footing type (the schedule or details give each type's dimensions), and convert:</p>
+    <p style="text-align:center;"><strong>CY = (LF × width in ft × depth in ft) ÷ 27</strong></p>
+    <p>Don't net out the corners where footings intersect — the overlap is small, and in the field it's poured, not subtracted.</p>
+
+    <h2>Piers and spread footings: count them</h2>
+    <p>Isolated piers and spread footings are counts. Count each type (P1, P2, F3…) from the foundation plan, multiply by the per-unit volume from the schedule, and keep the counts visible in your takeoff — the count itself gets checked against the column grid, and a missed pier is a missed crane day, not just missed concrete.</p>
+
+    <h2>Rebar: pounds from spacing</h2>
+    <p>Reinforcing is bought and priced by weight. From bar spacing you get bar count; from count and length you get LF; from LF and bar size you get pounds. Bar weights per foot: #3 = 0.376 lb, #4 = 0.668 lb, #5 = 1.043 lb, #6 = 1.502 lb. For a slab reinforced each way: bars in one direction = (span ÷ spacing, rounded up) + 1, times the slab length; repeat for the other direction; sum the LF, multiply by weight, then add 5–10% for laps, dowels, and chairs. Welded wire mesh is simpler — slab SF plus 10–15% for laps, ordered by the sheet or roll.</p>
+
+    <h2>Vapor barrier and edge forms</h2>
+    <p>Vapor barrier is slab SF plus 10–15% for laps and turnups at edges, ordered by the roll. Edge formwork is the slab perimeter in LF — a perimeter measurement, not an area — plus forms at any slab openings and construction joints. Formwork for footings is both faces where site conditions require it; many footings pour neat against the trench, and the details or your field experience tell you which.</p>
+
+    <h2>Waste and order rounding</h2>
+    <p>Concrete waste covers over-excavation, uneven subgrade, spillage, and pump line losses — 5% on clean formed work, 8–10% on slab-on-grade over real-world subgrade. Then round to how the material is actually sold: ready-mix to the half yard (and respect the plant's minimum load), rebar to full stick lengths, barrier to full rolls. Coming up half a yard short with a full crew and a pump on the clock costs vastly more than the extra half yard.</p>
+
+    <h2>Worked example: 30' × 40' slab at 4&quot;</h2>
+    <p>Slab on grade, 4&quot; thick, #3 rebar at 18&quot; o.c. each way, vapor barrier under, formed on all four edges:</p>
+    <table>
+      <tr><th>Item</th><th>Math</th><th>Net qty</th><th>Waste</th><th>Order</th></tr>
+      <tr><td>Slab area</td><td>30 × 40</td><td>1,200 SF</td><td>—</td><td>—</td></tr>
+      <tr><td>Concrete</td><td>1,200 × 0.333' ÷ 27</td><td>14.8 CY</td><td>10%</td><td>16.5 CY</td></tr>
+      <tr><td>Rebar, #3 @ 18&quot;</td><td>(21 × 40') + (28 × 30') = 1,680 LF × 0.376</td><td>632 LB</td><td>10% laps</td><td>700 LB</td></tr>
+      <tr><td>Vapor barrier</td><td>1,200 SF + laps/turnups</td><td>1,200 SF</td><td>15%</td><td>1,380 SF</td></tr>
+      <tr><td>Edge forms</td><td>2 × (30 + 40)</td><td>140 LF</td><td>—</td><td>140 LF</td></tr>
+    </table>
+    <p>Walk the rebar line once so it's not magic: bars running the 40' direction sit along the 30' side — 30 ÷ 1.5 = 20 spaces, so 21 bars × 40' = 840 LF. Bars running the 30' direction sit along the 40' side — 40 ÷ 1.5 = 26.7, round up to 27 spaces, so 28 bars × 30' = 840 LF. Total 1,680 LF × 0.376 lb/ft = 632 lb, plus laps.</p>
+    <div class="callout"><strong>The classic concrete blunders:</strong> inches not converted to feet before the volume math (a 4&quot; slab computed as 4' is a 12× error), thickened edges ignored, and theoretical yardage ordered with zero waste. Every experienced concrete estimator has a story about at least one of these. Build the conversion into your process so it can't be skipped on a busy day.</div>
+
+    <h2>Where software carries the math</h2>
+    <p>Every formula above works on paper. What software removes is the transcription between them. In Groundwork Takeoff, Volume mode does the SF × depth → CY conversion as you trace the slab boundary — set the depth once, snap to the corners, and the yardage appears in the live estimate grid. The formula evaluator means any quantity field takes math directly: type <code>140*2*0.074</code> for a footing run or <code>1680*0.376*1.1</code> for rebar weight, and the field computes it — no side calculator, no retyping errors. Concrete assemblies tie it together: one traced slab drives concrete, rebar, vapor barrier, and edge-form line items at once, each with its own waste factor, and the perimeter for edge forms comes from the same shape you already drew. Counts handle the piers, everything exports to Excel for the bid, and it all runs natively on Mac and Windows. <a href="../pricing.html">Pricing is public</a> and the 14-day trial needs no card — the 30×40 example above takes about two minutes to reproduce. For the counting-heavy trades, see our <a href="./electrical-count-takeoff-guide.html">electrical count takeoff guide</a> next.</p>
+
+    <div class="article-cta">
+      <h3 style="margin:0 0 8px;font-size:24px;letter-spacing:-0.02em;">Trace the slab. Get the yardage.</h3>
+      <p style="color:var(--ink-dim);margin:0 0 20px;">Volume mode, formula fields, and concrete assemblies — 14-day free trial, no card.</p>
+      <a class="btn btn-primary" href="https://takeoff.warriorhi.com">Start free trial</a>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="./">Blog</a> · <a href="../compare/">Compare</a> · <a href="../pricing.html">Pricing</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=3"></script>
+</body>
+</html>

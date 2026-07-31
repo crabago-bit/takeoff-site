@@ -111,7 +111,13 @@
       document.querySelectorAll("[data-annual-html]").forEach(function (el) {
         el.innerHTML = annual ? el.getAttribute("data-annual-html") : el.getAttribute("data-monthly-html");
       });
+      document.querySelectorAll(".tlabel").forEach(function (l) {
+        l.classList.toggle("active", (l.getAttribute("data-mode") === "annual") === annual);
+      });
     };
+    document.querySelectorAll(".tlabel").forEach(function (l) {
+      l.addEventListener("click", function () { setMode(l.getAttribute("data-mode") === "annual"); });
+    });
     toggle.addEventListener("click", function () {
       setMode(toggle.getAttribute("aria-checked") !== "true");
     });

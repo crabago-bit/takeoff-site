@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electrical Count Takeoff Guide: Devices, Fixtures, and the Double-Count Trap — Groundwork Takeoff</title>
+<meta name="description" content="How to run an accurate electrical count takeoff: read the symbol legend, count devices by type, measure home runs and conduit, reconcile against panel schedules, and avoid counting the same device twice across sheets.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/blog/electrical-count-takeoff-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electrical Count Takeoff Guide: Devices, Fixtures, and the Double-Count Trap">
+<meta property="og:description" content="Read the legend, count devices by type, measure home runs, reconcile against panel schedules, and never count the same device twice.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/blog/electrical-count-takeoff-guide.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=3">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Electrical Count Takeoff Guide: Devices, Fixtures, and the Double-Count Trap","datePublished":"2026-04-21","author":{"@type":"Organization","name":"Groundwork Takeoff"}}
+</script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="./">Blog</a>
+      <a href="../support.html">Support</a>
+      <a class="nav-cta" href="https://takeoff.warriorhi.com">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(30px,4vw,50px);">
+  <div class="hero-glow"></div>
+  <div class="article-head wrap">
+    <span class="eyebrow reveal">How-to · April 21, 2026</span>
+    <h1 class="reveal" style="font-size:clamp(34px,5vw,58px);letter-spacing:-0.03em;line-height:1.08;font-weight:800;">The electrical count takeoff guide</h1>
+    <p class="subhead reveal" style="--d:.1s;font-size:clamp(17px,1.8vw,21px);">Electrical estimating lives and dies by counting: hundreds of small symbols, each one a device, a box, wire, and labor. Here's how to count them once, correctly, and prove it.</p>
+  </div>
+</header>
+
+<article class="article" style="padding-bottom:clamp(80px,10vw,130px);">
+  <div class="article-body">
+    <h2>Start at the symbol legend</h2>
+    <p>Every electrical set opens with a legend sheet mapping symbols to devices — and no two engineers draw them identically. A duplex receptacle, a GFCI, a quad, a floor box, and an isolated-ground receptacle can be five nearly identical circles with different tick marks. Before counting anything, read the legend end to end and note the symbols that look alike. When a symbol on the plan isn't in the legend (it happens constantly), write an RFI or flag it as a scope question — don't guess. The legend is the contract between you and the drawing; a takeoff that ignores it is a list of shapes, not devices.</p>
+
+    <h2>Count devices by type, one pass per type</h2>
+    <p>Resist the urge to count everything in a room and move to the next room. Counting one device type across the whole sheet — all duplex receptacles, then all GFCIs, then all switches — is faster and dramatically more accurate, because your eye is pattern-matching a single shape instead of re-deciding what each symbol is. The usual passes:</p>
+    <ul>
+      <li><strong>Receptacles:</strong> duplex, GFCI, quad, floor, special-purpose (ranges, welders, equipment), usually split by mounting height where the drawings note it.</li>
+      <li><strong>Switches:</strong> single-pole, 3-way, 4-way, dimmers, occupancy sensors, low-voltage switching.</li>
+      <li><strong>Lighting fixtures:</strong> by fixture type letter (A, B, C…) against the fixture schedule — the schedule defines what each letter costs.</li>
+      <li><strong>Data and low voltage:</strong> data/phone outlets, AV, security devices — often on separate T-series or E-series sheets, sometimes carried by a different sub. Know whose scope they're in before you count them into yours.</li>
+    </ul>
+    <p>Mark every symbol as you count it. On paper that was a colored pencil dot; digitally it's a count marker. An unmarked symbol is a symbol you'll either miss or count twice.</p>
+
+    <h2>Home runs and branch conduit</h2>
+    <p>Counts don't capture the wire. Home runs — the arrow-tailed lines from the last device back toward the panel — get measured as linear feet, and the plan only shows them schematically, so the convention is: measure the drawn run, then add the vertical drops and rise at each end, and apply your standard slack allowance. Branch wiring between devices is often estimated by device-count formulas (an average LF of conduit and wire per device, tuned by building type from your history) rather than traced line by line — a defensible shortcut as long as you state it and apply it consistently. Feeders and larger conduit runs deserve real linear measurement, floor by floor, with vertical rises added explicitly.</p>
+
+    <h2>Reconcile against the panel schedules</h2>
+    <p>The panel schedules are your built-in answer key. Each panelboard schedule lists its circuits with descriptions and loads; if you counted 46 receptacles fed from panel LP-1 but the schedule shows receptacle circuits that could plausibly serve 30, one of you is wrong — and it's worth twenty minutes to find out which. Fixture counts reconcile the same way against the lighting fixture schedule totals, when the engineer provides them. Schedules also expose scope the plans understate: spares, space-only breakers, and equipment connections that appear in the schedule but are easy to miss on a crowded plan.</p>
+
+    <h2>The double-count trap</h2>
+    <p>The most expensive systematic error in count takeoffs is counting the same device on two different sheets. It happens in predictable places:</p>
+    <table>
+      <tr><th>Where it happens</th><th>The trap</th><th>The rule</th></tr>
+      <tr><td>Enlarged plans</td><td>Kitchen or lab devices appear on the floor plan AND the enlarged plan</td><td>Pick one sheet as source of truth per area; mark the other "counted elsewhere"</td></tr>
+      <tr><td>Overlapping match lines</td><td>Devices near a match line drawn on both adjacent sheets</td><td>Count to the match line on one sheet only, consistently (e.g., always the lower-numbered sheet)</td></tr>
+      <tr><td>Power vs. lighting sheets</td><td>Some devices (exit signs, fans) show on both E-series sheets</td><td>Assign each device type to exactly one sheet series before counting</td></tr>
+      <tr><td>Demo vs. new work</td><td>Existing-to-remain devices counted as new</td><td>Confirm the line-type convention (dashed vs. solid) in the legend first</td></tr>
+    </table>
+    <div class="callout"><strong>Write the source-of-truth map down.</strong> Before counting, list which sheet owns which area and which device types. It takes five minutes, it makes your counts reproducible by a second estimator, and it's the single best defense against both double counts and gaps at the seams.</div>
+
+    <h2>Verification passes</h2>
+    <p>A count takeoff isn't done when the counting is done; it's done when it's been checked. Three passes that catch most errors: a <strong>visual sweep</strong> of every sheet looking for any unmarked symbol; a <strong>ratio sanity check</strong> (receptacles per SF and fixtures per SF against similar past jobs — an office floor with one receptacle per 400 SF should make you suspicious); and the <strong>schedule reconciliation</strong> above. If the project has addenda, re-check the affected sheets specifically — a one-line addendum note like "add GFCI at each column" can move a count more than a redrawn plan does.</p>
+
+    <h2>Counting with software: AI proposes, you dispose</h2>
+    <p>Everything above is method, and it works with a highlighter. Software's contribution is speed with an audit trail. In Groundwork Takeoff, the Count tool drops a visible marker on every symbol you click — color and shape per device type — so the "mark everything you count" discipline is automatic, totals accumulate live in the estimate grid, and every count traces back to marks on the sheet. Snap and the crosshair keep dense fixture layouts precise.</p>
+    <p>For the long repetitive passes, AI Detect finds candidate symbols matching one you select — and then, critically, it proposes rather than commits. You review the found instances and approve them; nothing enters your count because a model was confident. We built it that way deliberately: your stamp goes on the bid, so you stay the estimator of record. AI proposes, you dispose. It's included on every seat, not an add-on tier — see <a href="../pricing.html">pricing</a>, or how that compares to other tools' AI pricing on our <a href="../compare/">comparison hub</a>. When counts are approved, export the whole thing to Excel or CSV, split by device type, ready for pricing. And before any bid goes out, run our <a href="./takeoff-accuracy-checklist.html">12-point accuracy checklist</a> — the count-once rule is item five.</p>
+
+    <div class="article-cta">
+      <h3 style="margin:0 0 8px;font-size:24px;letter-spacing:-0.02em;">Count it once. Prove it.</h3>
+      <p style="color:var(--ink-dim);margin:0 0 20px;">Count tool + AI Detect with human approval, included on every seat. 14-day free trial, no card.</p>
+      <a class="btn btn-primary" href="https://takeoff.warriorhi.com">Start free trial</a>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="./">Blog</a> · <a href="../compare/">Compare</a> · <a href="../pricing.html">Pricing</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=3"></script>
+</body>
+</html>
