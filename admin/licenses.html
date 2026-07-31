@@ -53,6 +53,13 @@
   .seat .meta { color: var(--ink-faint); font-size: 12.5px; margin-top: 2px; }
   .seat.rv { opacity: .6; }
   .badge-rv { font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: rgba(255,69,58,.15); color: #ff8078; margin-left: 8px; }
+  .sect { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); margin: 14px 0 0; }
+  .sect:first-child { margin-top: 0; }
+  .searchbox { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; color: var(--ink); font: inherit; font-size: 13.5px; padding: 7px 16px; min-width: 260px; }
+  .searchbox:focus { outline: none; border-color: var(--accent); }
+  a.ulink { color: #8fb4ff; text-decoration: none; cursor: pointer; }
+  a.ulink:hover { text-decoration: underline; }
+  .pl-role { background: rgba(255,255,255,.08); color: var(--ink-dim); }
 </style>
 </head>
 <body>
@@ -73,6 +80,7 @@
       <img src="../assets/img/logo.png" width="24" height="24" alt="">
       <h1>License Console</h1>
       <span class="muted" id="who"></span>
+      <input id="search" class="searchbox" type="search" placeholder="Search company, email, plan…">
       <div class="filters">
         <a class="fbtn" href="./">Support →</a>
         <button class="fbtn" id="refresh">↻ Refresh</button>
@@ -92,6 +100,8 @@ const $ = (id) => document.getElementById(id);
 let orgs = [];
 let seats = [];
 let currentOrgId = null;
+let currentUserEmail = null;
+let query = "";
 let assignWarned = false;
 let entFlash = "";   // {cls, text} carried across re-render
 let seatFlash = "";
@@ -122,6 +132,11 @@ function showApp(session) {
 }
 $("logout").addEventListener("click", async () => { await sb.auth.signOut(); location.reload(); });
 $("refresh").addEventListener("click", load);
+$("search").addEventListener("input", (e) => { query = e.target.value.trim(); renderList(); });
+$("detail").addEventListener("click", (e) => {
+  const a = e.target.closest("a.ulink");
+  if (a && a.dataset.email) { e.preventDefault(); openUser(a.dataset.email); }
+});
 
 async function load() {
   const { data, error } = await sb.rpc("admin_license_overview");
@@ -136,9 +151,19 @@ async function load() {
   orgs = data;
   renderList();
   if (currentOrgId) {
-    if (orgs.some((o) => o.org_id === currentOrgId)) { await openOrg(currentOrgId); }
-    else { currentOrgId = null; $("detail").innerHTML = ""; }
+    if (orgs.some((o) => o.org_id === currentOrgId)) {
+      await openOrg(currentOrgId);
+      if (currentUserEmail) { await openUser(currentUserEmail); }
+    }
+    else { currentOrgId = null; currentUserEmail = null; $("detail").innerHTML = ""; }
   }
+}
+
+function rowMatches(o) {
+  if (!query) return true;
+  const q = query.toLowerCase();
+  const hay = [o.org_name, o.owner_email, o.plan, o.status, ...(Array.isArray(o.member_emails) ? o.member_emails : [])];
+  return hay.some((v) => v != null && String(v).toLowerCase().includes(q));
 }
 
 function planPill(o) {
@@ -151,18 +176,31 @@ function planPill(o) {
 }
 
 function renderList() {
-  $("olist").innerHTML = orgs.length ? orgs.map((o) => {
+  const orgRow = (o) => {
     const p = planPill(o);
+    const personal = !!o.is_personal;
+    const title = personal ? (o.owner_email || o.org_name) : o.org_name;
+    const metaBits = personal
+      ? [esc(o.org_name), `created ${o.org_created ? fmtD(o.org_created) : "—"}`]
+      : [`${o.members ?? 0} member${o.members === 1 ? "" : "s"}`, `created ${o.org_created ? fmtD(o.org_created) : "—"}`];
     return `
     <div class="card orow${o.org_id === currentOrgId ? " sel" : ""}" data-id="${esc(o.org_id)}">
-      <div><div class="subj">${esc(o.org_name)}</div>
-        <div class="meta">${o.members ?? 0} member${o.members === 1 ? "" : "s"} · created ${o.org_created ? fmtD(o.org_created) : "—"}</div></div>
+      <div><div class="subj">${esc(title)}</div>
+        <div class="meta">${metaBits.join(" · ")}</div></div>
       <span class="pill ${p.cls}">${esc(p.label)}</span>
       <span class="meta">${o.plan ? `${o.seats_used ?? 0}/${o.seats ?? "—"} seats assigned` : "seat licensing not set up"}</span>
       <span class="meta">${o.current_period_end ? "ends " + fmtD(o.current_period_end) : ""}</span>
     </div>`;
-  }).join("") : `<p class="muted">No organizations yet.</p>`;
-  $("olist").querySelectorAll(".orow").forEach((r) => r.addEventListener("click", () => { assignWarned = false; openOrg(r.dataset.id); }));
+  };
+  const companies = orgs.filter((o) => !o.is_personal && rowMatches(o))
+    .sort((a, b) => String(a.org_name || "").localeCompare(String(b.org_name || ""), undefined, { sensitivity: "base" }));
+  const personal = orgs.filter((o) => o.is_personal && rowMatches(o))
+    .sort((a, b) => String(a.owner_email || "").localeCompare(String(b.owner_email || ""), undefined, { sensitivity: "base" }));
+  let html = "";
+  if (companies.length) html += `<div class="sect">Companies</div>` + companies.map(orgRow).join("");
+  if (personal.length) html += `<div class="sect">Personal licenses</div>` + personal.map(orgRow).join("");
+  $("olist").innerHTML = html || `<p class="muted">${orgs.length ? "No matches." : "No organizations yet."}</p>`;
+  $("olist").querySelectorAll(".orow").forEach((r) => r.addEventListener("click", () => { assignWarned = false; currentUserEmail = null; openOrg(r.dataset.id); }));
 }
 
 async function openOrg(id) {
@@ -178,7 +216,7 @@ async function openOrg(id) {
   const seatRow = (s) => `
     <div class="seat${s.revoked_at ? " rv" : ""}">
       <div>
-        <div class="email">${esc(s.email)}${s.revoked_at ? '<span class="badge-rv">revoked</span>' : ""}</div>
+        <div class="email"><a class="ulink" data-email="${esc(s.email)}">${esc(s.email)}</a>${s.revoked_at ? '<span class="badge-rv">revoked</span>' : ""}</div>
         <div class="meta">assigned ${s.assigned_at ? fmtD(s.assigned_at) : "—"}${s.assigned_by ? " by " + esc(s.assigned_by) : ""}${s.revoked_at ? " · revoked " + fmtD(s.revoked_at) : ""}</div>
         ${(s.devices || []).map((d) => `<div class="meta">🖥 ${esc(d.device_name || "device")}${d.platform ? " · " + esc(d.platform) : ""} · last seen ${d.last_seen ? fmt(d.last_seen) : "never"}</div>`).join("")}
       </div>
@@ -189,6 +227,7 @@ async function openOrg(id) {
     <div class="card detail">
       <h2>${esc(o.org_name)} <span class="pill ${p.cls}">${esc(p.label)}</span></h2>
       <div class="meta">org ${esc(o.org_id)} · ${o.members ?? 0} member${o.members === 1 ? "" : "s"} · created ${o.org_created ? fmtD(o.org_created) : "—"}${o.paddle_subscription_id ? " · paddle " + esc(o.paddle_subscription_id) : ""}${o.trial_ends_at ? " · trial ends " + fmtD(o.trial_ends_at) : ""}</div>
+      ${Array.isArray(o.member_emails) && o.member_emails.length ? `<div class="meta">Members: ${o.member_emails.map((m) => `<a class="ulink" data-email="${esc(m)}">${esc(m)}</a>`).join(", ")}</div>` : ""}
 
       <h3>Entitlement</h3>
       <div class="frm">
@@ -247,6 +286,68 @@ async function openOrg(id) {
     toggleSeat(b.dataset.seat, b.dataset.act);
   });
   renderList();
+}
+
+function backToOrg() {
+  currentUserEmail = null;
+  if (currentOrgId) { openOrg(currentOrgId); } else { $("detail").innerHTML = ""; }
+}
+
+function miniPill(plan, status) {
+  if (status === "past_due") return `<span class="pill pl-warn">PAST DUE</span>`;
+  if (status === "canceled" || status === "expired") return `<span class="pill pl-bad">${esc(status.toUpperCase())}</span>`;
+  if (plan === "perpetual") return `<span class="pill pl-perp">PERPETUAL</span>`;
+  if (!plan || plan === "trial") return `<span class="pill pl-trial">TRIAL</span>`;
+  return `<span class="pill pl-ok">${esc(plan.toUpperCase())}</span>`;
+}
+
+async function openUser(email) {
+  currentUserEmail = email;
+  $("detail").innerHTML = `<div class="card detail"><p class="muted">Loading ${esc(email)}…</p></div>`;
+  const { data, error } = await sb.rpc("admin_user_detail", { p_email: email });
+  const back = `<a class="ulink" id="u-back">← back to org</a>`;
+  if (error || !data || data.error) {
+    $("detail").innerHTML = `<div class="card detail">${back}<p class="err" style="margin-top:12px;">${esc(error ? error.message : (data && data.error) || "no result")}</p></div>`;
+    $("u-back").addEventListener("click", backToOrg);
+    return;
+  }
+  const u = data;
+  const orgRows = (u.orgs || []).map((g) => `
+    <div class="seat">
+      <div>
+        <div class="email">${esc(g.org_name)}</div>
+        <div class="meta">org ${esc(g.org_id)}</div>
+      </div>
+      <div class="row" style="margin-top:0;">
+        <span class="pill pl-role">${esc(g.role || "member")}</span>
+        ${miniPill(g.plan, g.status)}
+      </div>
+    </div>`).join("") || `<p class="muted">No org memberships.</p>`;
+  const seatRows = (u.seats || []).map((s) => `
+    <div class="seat${s.revoked_at ? " rv" : ""}">
+      <div>
+        <div class="email">${esc(s.org_name)}${s.revoked_at ? '<span class="badge-rv">revoked</span>' : ""}</div>
+        <div class="meta">assigned ${s.assigned_at ? fmtD(s.assigned_at) : "—"}${s.assigned_by ? " by " + esc(s.assigned_by) : ""}${s.revoked_at ? " · revoked " + fmtD(s.revoked_at) : ""}</div>
+        ${(s.devices || []).map((d) => `<div class="meta">🖥 ${esc(d.device_name || "device")}${d.platform ? " · " + esc(d.platform) : ""}${d.activated_at ? " · activated " + fmtD(d.activated_at) : ""} · last seen ${d.last_seen ? fmt(d.last_seen) : "never"}</div>`).join("")}
+      </div>
+    </div>`).join("") || `<p class="muted">No seat assignments.</p>`;
+
+  $("detail").innerHTML = `
+    <div class="card detail">
+      ${back}
+      <h2 style="margin-top:12px;">${esc(u.email)}</h2>
+      <div class="meta">account created ${u.created_at ? fmtD(u.created_at) : "—"} · last sign-in ${u.last_sign_in_at ? fmt(u.last_sign_in_at) : "never"} · email ${u.email_confirmed_at ? "confirmed " + fmtD(u.email_confirmed_at) : "not confirmed"}</div>
+
+      <h3>Organizations</h3>
+      ${orgRows}
+
+      <h3>Seats</h3>
+      ${seatRows}
+
+      <h3>Support</h3>
+      <p class="muted">${Number(u.open_tickets) || 0} open · ${Number(u.total_tickets) || 0} total tickets · <a class="ulink" href="./index.html">view tickets</a></p>
+    </div>`;
+  $("u-back").addEventListener("click", backToOrg);
 }
 
 function dateVal(id) {
