@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>License Console — Groundwork Takeoff</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=3">
+<style>
+  body { padding-top: 0; }
+  .console { max-width: 1240px; margin: 0 auto; padding: 90px 24px 60px; }
+  .card { background: var(--bg-card); border: 1px solid rgba(255,255,255,.09); border-radius: 16px; }
+  .login-card { max-width: 400px; margin: 10vh auto; padding: 36px; }
+  .login-card input { width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: var(--ink); font: inherit; padding: 11px 14px; margin-bottom: 12px; }
+  .login-card input:focus { outline: none; border-color: var(--accent); }
+  .topbar { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+  .topbar h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+  .filters { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+  .fbtn { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: var(--ink-dim); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .fbtn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  a.fbtn { text-decoration: none; display: inline-block; }
+  .tlist { display: grid; gap: 10px; }
+  .orow { padding: 16px 20px; display: grid; grid-template-columns: 1fr auto auto auto; gap: 16px; align-items: center; cursor: pointer; transition: border-color .2s; }
+  .orow:hover { border-color: rgba(110,161,255,.4); }
+  .orow.sel { border-color: var(--accent); }
+  .orow .subj { font-weight: 650; font-size: 15px; }
+  .orow .meta { color: var(--ink-faint); font-size: 13px; }
+  .pill { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .pl-trial { background: rgba(110,161,255,.15); color: #8fb4ff; }
+  .pl-ok { background: rgba(48,209,88,.14); color: #63de8b; }
+  .pl-perp { background: rgba(191,90,242,.16); color: #d49bf5; }
+  .pl-warn { background: rgba(255,159,10,.15); color: #ffbe55; }
+  .pl-bad { background: rgba(255,69,58,.15); color: #ff8078; }
+  .detail { padding: 26px; margin-top: 14px; }
+  .detail h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -0.02em; }
+  .detail .meta { color: var(--ink-faint); font-size: 13px; margin-bottom: 18px; }
+  .detail h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-dim); margin: 24px 0 10px; }
+  .detail input, .detail select, .detail textarea { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: var(--ink); font: inherit; font-size: 13.5px; padding: 8px 10px; }
+  .detail select { background: #17171d; border-color: rgba(255,255,255,.15); }
+  .detail input:focus, .detail select:focus, .detail textarea:focus { outline: none; border-color: var(--accent); }
+  .detail textarea { width: 100%; min-height: 70px; }
+  .frm { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .frm label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: 600; color: var(--ink-faint); }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .btn-sm { padding: 8px 18px; font-size: 14px; }
+  .muted { color: var(--ink-faint); font-size: 13px; }
+  .err { color: var(--red); font-size: 13px; }
+  .ok-txt { color: #63de8b; font-size: 13px; }
+  .seat { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; background: rgba(255,255,255,.04); border-radius: 10px; margin-bottom: 8px; }
+  .seat .email { font-weight: 650; font-size: 14px; }
+  .seat .meta { color: var(--ink-faint); font-size: 12.5px; margin-top: 2px; }
+  .seat.rv { opacity: .6; }
+  .badge-rv { font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: rgba(255,69,58,.15); color: #ff8078; margin-left: 8px; }
+</style>
+</head>
+<body>
+<div class="console">
+  <div id="login" class="card login-card" style="display:none;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;font-weight:700;">
+      <img src="../assets/img/logo.png" width="26" height="26" alt=""> License Console
+    </div>
+    <input id="l-email" type="email" placeholder="staff email" autocomplete="username">
+    <input id="l-pass" type="password" placeholder="password" autocomplete="current-password">
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" id="l-go">Sign in</button>
+    <p class="err" id="l-err" style="display:none;"></p>
+    <p class="muted" style="margin-top:14px;">Uses your Groundwork Takeoff account. Access is limited to the support-staff allowlist.</p>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="topbar">
+      <img src="../assets/img/logo.png" width="24" height="24" alt="">
+      <h1>License Console</h1>
+      <span class="muted" id="who"></span>
+      <div class="filters">
+        <a class="fbtn" href="./">Support →</a>
+        <button class="fbtn" id="refresh">↻ Refresh</button>
+        <button class="fbtn" id="logout">Sign out</button>
+      </div>
+    </div>
+    <div class="tlist" id="olist"><p class="muted">Loading…</p></div>
+    <div id="detail"></div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const sb = createClient("https://cmmbsfdpxdnzznwiskww.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtbWJzZmRweGRuenpud2lza3d3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4OTk2ODQsImV4cCI6MjA4OTQ3NTY4NH0.wMUb42NR1ipWFvMcdOfo4flsO-vA8baQZ6HN9lZcIpU");
+
+const $ = (id) => document.getElementById(id);
+let orgs = [];
+let seats = [];
+let currentOrgId = null;
+let assignWarned = false;
+let entFlash = "";   // {cls, text} carried across re-render
+let seatFlash = "";
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (d) => new Date(d).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+const fmtD = (d) => new Date(d).toLocaleDateString([], { year: "numeric", month: "short", day: "numeric" });
+const toDateInput = (d) => d ? new Date(d).toISOString().slice(0, 10) : "";
+const plusDays = (n) => new Date(Date.now() + n * 864e5).toISOString();
+
+async function init() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) { showApp(session); } else { $("login").style.display = "block"; }
+}
+$("l-go").addEventListener("click", login);
+$("l-pass").addEventListener("keydown", (e) => e.key === "Enter" && login());
+async function login() {
+  $("l-err").style.display = "none";
+  const { data, error } = await sb.auth.signInWithPassword({ email: $("l-email").value.trim(), password: $("l-pass").value });
+  if (error) { $("l-err").textContent = error.message; $("l-err").style.display = "block"; return; }
+  showApp(data.session);
+}
+function showApp(session) {
+  $("login").style.display = "none";
+  $("app").style.display = "block";
+  $("who").textContent = session.user.email;
+  load();
+}
+$("logout").addEventListener("click", async () => { await sb.auth.signOut(); location.reload(); });
+$("refresh").addEventListener("click", load);
+
+async function load() {
+  const { data, error } = await sb.rpc("admin_license_overview");
+  if (error) {
+    $("olist").innerHTML = `<p class="err">${esc(error.message)} — if you just signed in, your account may not be on the support-staff allowlist.</p>`;
+    return;
+  }
+  if (!Array.isArray(data)) {
+    $("olist").innerHTML = `<p class="err">${esc(data && data.error ? data.error : "unexpected response")} — your account is not on the support-staff allowlist.</p>`;
+    return;
+  }
+  orgs = data;
+  renderList();
+  if (currentOrgId) {
+    if (orgs.some((o) => o.org_id === currentOrgId)) { await openOrg(currentOrgId); }
+    else { currentOrgId = null; $("detail").innerHTML = ""; }
+  }
+}
+
+function planPill(o) {
+  if (!o.plan) return { cls: "pl-trial", label: "TRIAL ends " + (o.trial_ends_at ? fmtD(o.trial_ends_at) : "—") };
+  if (o.status === "past_due") return { cls: "pl-warn", label: "PAST DUE" };
+  if (o.status === "canceled" || o.status === "expired") return { cls: "pl-bad", label: o.status.toUpperCase() };
+  if (o.plan === "perpetual") return { cls: "pl-perp", label: "PERPETUAL" };
+  if (o.plan === "trial") return { cls: "pl-trial", label: "TRIAL" + (o.trial_ends_at || o.current_period_end ? " ends " + fmtD(o.trial_ends_at || o.current_period_end) : "") };
+  return { cls: "pl-ok", label: o.plan.toUpperCase() };
+}
+
+function renderList() {
+  $("olist").innerHTML = orgs.length ? orgs.map((o) => {
+    const p = planPill(o);
+    return `
+    <div class="card orow${o.org_id === currentOrgId ? " sel" : ""}" data-id="${esc(o.org_id)}">
+      <div><div class="subj">${esc(o.org_name)}</div>
+        <div class="meta">${o.members ?? 0} member${o.members === 1 ? "" : "s"} · created ${o.org_created ? fmtD(o.org_created) : "—"}</div></div>
+      <span class="pill ${p.cls}">${esc(p.label)}</span>
+      <span class="meta">seats ${o.seats_used ?? 0}/${o.seats ?? "—"} used</span>
+      <span class="meta">${o.current_period_end ? "ends " + fmtD(o.current_period_end) : ""}</span>
+    </div>`;
+  }).join("") : `<p class="muted">No organizations yet.</p>`;
+  $("olist").querySelectorAll(".orow").forEach((r) => r.addEventListener("click", () => { assignWarned = false; openOrg(r.dataset.id); }));
+}
+
+async function openOrg(id) {
+  currentOrgId = id;
+  const o = orgs.find((x) => x.org_id === id);
+  if (!o) return;
+  const { data: seatData, error: seatErr } = await sb.rpc("admin_org_seats", { p_org: id });
+  seats = Array.isArray(seatData) ? seatData : [];
+  const active = seats.filter((s) => !s.revoked_at);
+  const revoked = seats.filter((s) => s.revoked_at);
+  const p = planPill(o);
+
+  const seatRow = (s) => `
+    <div class="seat${s.revoked_at ? " rv" : ""}">
+      <div>
+        <div class="email">${esc(s.email)}${s.revoked_at ? '<span class="badge-rv">revoked</span>' : ""}</div>
+        <div class="meta">assigned ${s.assigned_at ? fmtD(s.assigned_at) : "—"}${s.assigned_by ? " by " + esc(s.assigned_by) : ""}${s.revoked_at ? " · revoked " + fmtD(s.revoked_at) : ""}</div>
+        ${(s.devices || []).map((d) => `<div class="meta">🖥 ${esc(d.device_name || "device")}${d.platform ? " · " + esc(d.platform) : ""} · last seen ${d.last_seen ? fmt(d.last_seen) : "never"}</div>`).join("")}
+      </div>
+      <button class="fbtn" data-seat="${esc(s.id)}" data-act="${s.revoked_at ? "restore" : "revoke"}">${s.revoked_at ? "Restore" : "Revoke"}</button>
+    </div>`;
+
+  $("detail").innerHTML = `
+    <div class="card detail">
+      <h2>${esc(o.org_name)} <span class="pill ${p.cls}">${esc(p.label)}</span></h2>
+      <div class="meta">org ${esc(o.org_id)} · ${o.members ?? 0} member${o.members === 1 ? "" : "s"} · created ${o.org_created ? fmtD(o.org_created) : "—"}${o.paddle_subscription_id ? " · paddle " + esc(o.paddle_subscription_id) : ""}${o.trial_ends_at ? " · trial ends " + fmtD(o.trial_ends_at) : ""}</div>
+
+      <h3>Entitlement</h3>
+      <div class="frm">
+        <label>Plan
+          <select id="e-plan">${["trial", "monthly", "annual", "perpetual"].map((x) => `<option ${x === (o.plan || "trial") ? "selected" : ""}>${x}</option>`).join("")}</select></label>
+        <label>Status
+          <select id="e-status">${["active", "past_due", "canceled", "expired"].map((x) => `<option ${x === (o.status || "active") ? "selected" : ""}>${x}</option>`).join("")}</select></label>
+        <label>Seats
+          <input id="e-seats" type="number" min="1" step="1" value="${Number(o.seats) || 1}"></label>
+        <label>Period end
+          <input id="e-period" type="date" value="${toDateInput(o.current_period_end)}"></label>
+        <label>Maintenance until
+          <input id="e-maint" type="date" value="${toDateInput(o.maintenance_until)}"></label>
+        <label>Perpetual version ceiling
+          <input id="e-ceiling" type="text" placeholder="e.g. 2"></label>
+      </div>
+      <label style="display:block;margin-top:12px;font-size:12px;font-weight:600;color:var(--ink-faint);">Notes
+        <textarea id="e-notes" placeholder="internal notes">${esc(o.notes || "")}</textarea></label>
+      <div class="row">
+        <button class="btn btn-primary btn-sm" id="e-save">Save</button>
+        <span id="e-msg"></span>
+      </div>
+      <div class="row">
+        <span class="muted">Quick:</span>
+        <button class="fbtn" id="qa-30">Grant 30 days</button>
+        <button class="fbtn" id="qa-year">Grant 1 year</button>
+        <button class="fbtn" id="qa-perp">Make perpetual</button>
+        <button class="fbtn" id="qa-susp">Suspend</button>
+      </div>
+
+      <h3>Seats — ${active.length}/${o.seats ?? "—"} used</h3>
+      ${seatErr ? `<p class="err">${esc(seatErr.message)}</p>` : ""}
+      <div id="seatlist">
+        ${active.map(seatRow).join("") || `<p class="muted">No active seats.</p>`}
+        ${revoked.length ? `<h3>Revoked</h3>${revoked.map(seatRow).join("")}` : ""}
+      </div>
+      <div class="row">
+        <input id="a-email" type="email" placeholder="user@company.com" style="min-width:240px;">
+        <button class="btn btn-primary btn-sm" id="a-go">Assign</button>
+        <span id="a-msg"></span>
+      </div>
+    </div>`;
+
+  if (entFlash) { $("e-msg").innerHTML = entFlash; entFlash = ""; }
+  if (seatFlash) { $("a-msg").innerHTML = seatFlash; seatFlash = ""; }
+
+  $("e-save").addEventListener("click", () => saveEnt());
+  $("qa-30").addEventListener("click", () => saveEnt({ plan: "monthly", status: "active", current_period_end: plusDays(30) }));
+  $("qa-year").addEventListener("click", () => saveEnt({ plan: "annual", status: "active", current_period_end: plusDays(365) }));
+  $("qa-perp").addEventListener("click", () => saveEnt({ plan: "perpetual", status: "active", current_period_end: null }));
+  $("qa-susp").addEventListener("click", () => saveEnt({ status: "canceled" }));
+  $("a-go").addEventListener("click", assignSeat);
+  $("a-email").addEventListener("keydown", (e) => e.key === "Enter" && assignSeat());
+  $("seatlist").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-seat]"); if (!b) return;
+    toggleSeat(b.dataset.seat, b.dataset.act);
+  });
+  renderList();
+}
+
+function dateVal(id) {
+  const v = $(id).value;
+  return v ? new Date(v + "T00:00:00Z").toISOString() : null;
+}
+
+async function saveEnt(overrides = {}) {
+  const payload = {
+    org_id: currentOrgId,
+    plan: $("e-plan").value,
+    status: $("e-status").value,
+    seats: parseInt($("e-seats").value, 10) || 1,
+    current_period_end: dateVal("e-period"),
+    maintenance_until: dateVal("e-maint"),
+    perpetual_version_ceiling: $("e-ceiling").value.trim() || null,
+    notes: $("e-notes").value.trim() || null,
+    ...overrides,
+  };
+  const { error } = await sb.from("entitlements").upsert(payload, { onConflict: "org_id" });
+  if (error) { $("e-msg").innerHTML = `<span class="err">save failed: ${esc(error.message)}</span>`; return; }
+  entFlash = `<span class="ok-txt">saved ✓</span>`;
+  await load();
+}
+
+async function assignSeat() {
+  const email = $("a-email").value.trim();
+  if (!email) return;
+  const o = orgs.find((x) => x.org_id === currentOrgId);
+  const activeCount = seats.filter((s) => !s.revoked_at).length;
+  const limit = Number(o?.seats) || 0;
+  const over = limit > 0 && activeCount + 1 > limit;
+  if (over && !assignWarned) {
+    assignWarned = true;
+    $("a-msg").innerHTML = `<span class="err">over seat limit (${activeCount}/${limit} used) — click Assign again to add anyway</span>`;
+    return;
+  }
+  assignWarned = false;
+  const { data: { session } } = await sb.auth.getSession();
+  const { error } = await sb.from("seat_assignments").insert({ org_id: currentOrgId, email, assigned_by: session.user.email });
+  if (error) { $("a-msg").innerHTML = `<span class="err">assign failed: ${esc(error.message)}</span>`; return; }
+  seatFlash = `<span class="ok-txt">assigned ✓</span>${over ? ` <span class="err">over seat limit</span>` : ""}`;
+  await load();
+}
+
+async function toggleSeat(seatId, act) {
+  const patch = act === "revoke" ? { revoked_at: new Date().toISOString() } : { revoked_at: null };
+  const { error } = await sb.from("seat_assignments").update(patch).eq("id", seatId);
+  seatFlash = error ? `<span class="err">${act} failed: ${esc(error.message)}</span>` : `<span class="ok-txt">${act === "revoke" ? "revoked" : "restored"} ✓</span>`;
+  await load();
+}
+
+init();
+</script>
+</body>
+</html>
