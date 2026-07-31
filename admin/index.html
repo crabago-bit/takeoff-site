@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support Console — Groundwork Takeoff</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+  body { padding-top: 0; }
+  .console { max-width: 1240px; margin: 0 auto; padding: 90px 24px 60px; }
+  .card { background: var(--bg-card); border: 1px solid rgba(255,255,255,.09); border-radius: 16px; }
+  .login-card { max-width: 400px; margin: 10vh auto; padding: 36px; }
+  .login-card input { width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: var(--ink); font: inherit; padding: 11px 14px; margin-bottom: 12px; }
+  .login-card input:focus { outline: none; border-color: var(--accent); }
+  .topbar { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+  .topbar h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+  .filters { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+  .fbtn { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: var(--ink-dim); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .fbtn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tlist { display: grid; gap: 10px; }
+  .trow { padding: 16px 20px; display: grid; grid-template-columns: auto 1fr auto auto; gap: 16px; align-items: center; cursor: pointer; transition: border-color .2s; }
+  .trow:hover { border-color: rgba(110,161,255,.4); }
+  .pill { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .st-open { background: rgba(255,69,58,.15); color: #ff8078; }
+  .st-in_progress { background: rgba(255,159,10,.15); color: #ffbe55; }
+  .st-waiting { background: rgba(110,161,255,.15); color: #8fb4ff; }
+  .st-closed { background: rgba(48,209,88,.14); color: #63de8b; }
+  .k-bug { background: rgba(255,69,58,.12); color: #ff9d96; }
+  .k-support { background: rgba(110,161,255,.12); color: #9ec2ff; }
+  .k-billing { background: rgba(255,214,10,.12); color: #ffe27a; }
+  .k-feature { background: rgba(48,209,88,.12); color: #7ce2a0; }
+  .trow .subj { font-weight: 650; font-size: 15px; }
+  .trow .meta { color: var(--ink-faint); font-size: 13px; }
+  .detail { padding: 26px; margin-top: 14px; }
+  .detail h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -0.02em; }
+  .detail .meta { color: var(--ink-faint); font-size: 13px; margin-bottom: 18px; }
+  .detail .body { white-space: pre-wrap; background: rgba(255,255,255,.04); border-radius: 10px; padding: 16px; font-size: 14.5px; line-height: 1.6; }
+  .msg { margin-top: 12px; padding: 14px 16px; border-radius: 10px; font-size: 14px; line-height: 1.55; }
+  .msg.staff { background: rgba(61,123,255,.1); border: 1px solid rgba(61,123,255,.25); }
+  .msg .who { font-size: 12px; color: var(--ink-faint); margin-bottom: 5px; }
+  .detail textarea { width: 100%; min-height: 100px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: var(--ink); font: inherit; font-size: 14px; padding: 12px; margin-top: 16px; }
+  .detail select { background: #17171d; border: 1px solid rgba(255,255,255,.15); color: var(--ink); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 13px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .btn-sm { padding: 8px 18px; font-size: 14px; }
+  .muted { color: var(--ink-faint); font-size: 13px; }
+  .err { color: var(--red); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="console">
+  <div id="login" class="card login-card" style="display:none;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;font-weight:700;">
+      <img src="../assets/img/logo.png" width="26" height="26" alt=""> Support Console
+    </div>
+    <input id="l-email" type="email" placeholder="staff email" autocomplete="username">
+    <input id="l-pass" type="password" placeholder="password" autocomplete="current-password">
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" id="l-go">Sign in</button>
+    <p class="err" id="l-err" style="display:none;"></p>
+    <p class="muted" style="margin-top:14px;">Uses your Groundwork Takeoff account. Access is limited to the support-staff allowlist.</p>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="topbar">
+      <img src="../assets/img/logo.png" width="24" height="24" alt="">
+      <h1>Support Console</h1>
+      <span class="muted" id="who"></span>
+      <div class="filters" id="filters">
+        <button class="fbtn on" data-f="active">Active</button>
+        <button class="fbtn" data-f="open">Open</button>
+        <button class="fbtn" data-f="in_progress">In progress</button>
+        <button class="fbtn" data-f="waiting">Waiting</button>
+        <button class="fbtn" data-f="closed">Closed</button>
+        <button class="fbtn" data-f="all">All</button>
+      </div>
+      <button class="fbtn" id="refresh">↻ Refresh</button>
+      <button class="fbtn" id="logout">Sign out</button>
+    </div>
+    <div class="tlist" id="tlist"><p class="muted">Loading…</p></div>
+    <div id="detail"></div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const sb = createClient("https://cmmbsfdpxdnzznwiskww.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtbWJzZmRweGRuenpud2lza3d3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4OTk2ODQsImV4cCI6MjA4OTQ3NTY4NH0.wMUb42NR1ipWFvMcdOfo4flsO-vA8baQZ6HN9lZcIpU");
+
+const $ = (id) => document.getElementById(id);
+let filter = "active";
+let tickets = [];
+let current = null;
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (d) => new Date(d).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+
+async function init() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) { showApp(session); } else { $("login").style.display = "block"; }
+}
+$("l-go").addEventListener("click", login);
+$("l-pass").addEventListener("keydown", (e) => e.key === "Enter" && login());
+async function login() {
+  $("l-err").style.display = "none";
+  const { data, error } = await sb.auth.signInWithPassword({ email: $("l-email").value.trim(), password: $("l-pass").value });
+  if (error) { $("l-err").textContent = error.message; $("l-err").style.display = "block"; return; }
+  showApp(data.session);
+}
+function showApp(session) {
+  $("login").style.display = "none";
+  $("app").style.display = "block";
+  $("who").textContent = session.user.email;
+  load();
+}
+$("logout").addEventListener("click", async () => { await sb.auth.signOut(); location.reload(); });
+$("refresh").addEventListener("click", load);
+$("filters").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-f]"); if (!b) return;
+  document.querySelectorAll("#filters .fbtn").forEach((x) => x.classList.remove("on"));
+  b.classList.add("on"); filter = b.dataset.f; render();
+});
+
+async function load() {
+  const { data, error } = await sb.from("support_tickets").select("*").order("updated_at", { ascending: false }).limit(300);
+  if (error) {
+    $("tlist").innerHTML = `<p class="err">${esc(error.message)} — if you just signed in, your account may not be on the support-staff allowlist.</p>`;
+    return;
+  }
+  tickets = data; render();
+}
+function render() {
+  const rows = tickets.filter((t) =>
+    filter === "all" ? true : filter === "active" ? t.status !== "closed" : t.status === filter);
+  $("tlist").innerHTML = rows.length ? rows.map((t) => `
+    <div class="card trow" data-id="${t.id}">
+      <span class="pill k-${esc(t.kind)}">${esc(t.kind)}</span>
+      <div><div class="subj">${esc(t.subject)}</div>
+        <div class="meta">${esc(t.name || t.email)}${t.company ? " · " + esc(t.company) : ""} · ${esc(t.source)}${t.platform ? " · " + esc(t.platform) : ""}${t.app_version ? " · v" + esc(t.app_version) : ""}</div></div>
+      <span class="meta">${fmt(t.updated_at)}</span>
+      <span class="pill st-${esc(t.status)}">${esc(t.status.replace("_", " "))}</span>
+    </div>`).join("") : `<p class="muted">Nothing here. Enjoy it while it lasts.</p>`;
+  $("tlist").querySelectorAll(".trow").forEach((r) => r.addEventListener("click", () => open(r.dataset.id)));
+}
+async function open(id) {
+  current = tickets.find((t) => t.id === id);
+  const { data: msgs } = await sb.from("support_messages").select("*").eq("ticket_id", id).order("created_at");
+  $("detail").innerHTML = `
+    <div class="card detail">
+      <h2>${esc(current.subject)}</h2>
+      <div class="meta">${esc(current.name || "")} &lt;${esc(current.email)}&gt;${current.company ? " · " + esc(current.company) : ""}
+        · opened ${fmt(current.created_at)} · ${esc(current.source)}${current.platform ? " · " + esc(current.platform) : ""}${current.app_version ? " · v" + esc(current.app_version) : ""}</div>
+      <div class="body">${esc(current.body)}</div>
+      ${(msgs || []).map((m) => `<div class="msg staff"><div class="who">${esc(m.author)} · ${fmt(m.created_at)}</div>${esc(m.body)}</div>`).join("")}
+      <textarea id="reply" placeholder="Internal reply log — record what you answered (send the actual reply from your email client to ${esc(current.email)})."></textarea>
+      <div class="row">
+        <button class="btn btn-primary btn-sm" id="send">Log reply</button>
+        <a class="btn btn-ghost btn-sm" href="mailto:${esc(current.email)}?subject=${encodeURIComponent("Re: " + current.subject)}">Reply by email</a>
+        <label class="muted">Status
+          <select id="st">${["open", "in_progress", "waiting", "closed"].map((s) => `<option ${s === current.status ? "selected" : ""}>${s}</option>`).join("")}</select></label>
+        <label class="muted">Priority
+          <select id="pr">${["low", "normal", "high", "urgent"].map((p) => `<option ${p === current.priority ? "selected" : ""}>${p}</option>`).join("")}</select></label>
+        <span class="muted" id="saved"></span>
+      </div>
+    </div>`;
+  $("st").addEventListener("change", saveMeta);
+  $("pr").addEventListener("change", saveMeta);
+  $("send").addEventListener("click", sendReply);
+  $("detail").scrollIntoView({ behavior: "smooth" });
+}
+async function saveMeta() {
+  const { error } = await sb.from("support_tickets").update({ status: $("st").value, priority: $("pr").value }).eq("id", current.id);
+  $("saved").textContent = error ? "save failed: " + error.message : "saved ✓";
+  if (!error) load();
+}
+async function sendReply() {
+  const body = $("reply").value.trim(); if (!body) return;
+  const { data: { session } } = await sb.auth.getSession();
+  const { error } = await sb.from("support_messages").insert({ ticket_id: current.id, author: session.user.email, is_staff: true, body });
+  if (error) { $("saved").textContent = "failed: " + error.message; return; }
+  open(current.id);
+}
+init();
+</script>
+</body>
+</html>
