@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download — Groundwork Takeoff for Mac &amp; Windows</title>
+<meta name="description" content="Download Groundwork Takeoff: native apps for macOS and Windows, plus the instant web app. Free 7-day trial — installers are free; sign in to activate.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/download.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Download Groundwork Takeoff">
+<meta property="og:description" content="Native Mac and Windows apps + instant web access. Installers are free — your login is the license.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/download.html">
+<link rel="icon" type="image/png" href="assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css?v=3">
+<style>
+  .dl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .dl-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,.09); border-radius: var(--radius-lg); padding: 36px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .dl-card .os { font-size: 44px; line-height: 1; margin-bottom: 14px; }
+  .dl-card h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.02em; }
+  .dl-card .meta { color: var(--ink-faint); font-size: 13.5px; margin-bottom: 22px; }
+  .dl-card .btn { width: 100%; justify-content: center; margin-top: auto; }
+  .dl-note { max-width: 720px; margin: clamp(40px,5vw,60px) auto 0; background: rgba(255,159,10,.07); border: 1px solid rgba(255,159,10,.3); border-radius: var(--radius-md); padding: 20px 26px; font-size: 14.5px; color: var(--ink-dim); line-height: 1.6; }
+  @media (max-width: 860px) { .dl-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+</style>
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="compare/">Compare</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog/">Blog</a>
+      <a href="support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(40px,5vw,70px);">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Download</span>
+    <h1 class="display reveal" style="--d:.05s;font-size:clamp(38px,6vw,80px)">Your machine.<br><span class="grad-text">Your takeoff.</span></h1>
+    <p class="subhead reveal" style="--d:.15s">Native apps for Mac and Windows, or the instant web app. Installers are free — <strong style="color:var(--ink)">your login is the license.</strong> Version <span id="dl-version">0.4.0</span> · <a href="whats-new.html" style="color:var(--accent-bright)">see what's new</a></p>
+  </div>
+</header>
+
+<section style="padding-bottom:clamp(80px,10vw,130px);">
+  <div class="wrap">
+    <div class="dl-grid" data-stagger>
+      <div class="dl-card">
+        <div class="os"></div>
+        <h3>macOS</h3>
+        <p class="meta">Apple silicon &amp; Intel · macOS 12+<br><span id="dl-mac-meta">Universal .dmg</span></p>
+        <a class="btn btn-primary" id="dl-mac" href="https://get.groundworkai.io/Groundwork-Takeoff-latest.dmg">Download for Mac</a>
+      </div>
+      <div class="dl-card">
+        <div class="os">🪟</div>
+        <h3>Windows</h3>
+        <p class="meta">Windows 10/11 · 64-bit<br><span id="dl-win-meta">.msi installer</span></p>
+        <a class="btn btn-primary" id="dl-win" href="https://get.groundworkai.io/Groundwork-Takeoff-latest.msi">Download for Windows</a>
+      </div>
+      <div class="dl-card">
+        <div class="os">🌐</div>
+        <h3>Web &amp; iPad</h3>
+        <p class="meta">Nothing to install · any modern browser<br>iPad: add to Home Screen</p>
+        <a class="btn btn-ghost" href="https://app.groundworkai.io">Open the web app</a>
+      </div>
+    </div>
+
+    <div class="dl-note reveal">
+      <strong style="color:var(--ink)">Two honest notes.</strong> (1) These builds are not yet code-signed — macOS and Windows will show an "unidentified developer" warning on first launch (right-click → Open on Mac; "More info → Run anyway" on Windows). Signed installers ship with v1.0. (2) The apps are free to install anywhere; features unlock when you sign in with an active trial or plan — so IT can deploy first and license later.
+    </div>
+  </div>
+</section>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(34px,5vw,64px)">Installed?<br>Measure something.</h2>
+    <p class="subhead reveal" style="--d:.1s">7-day free trial · every feature · no credit card.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="pricing.html">Pricing</a> · <a href="whats-new.html">What's new</a> · <a href="support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js?v=3"></script>
+<script>
+// live version from the installer host (CORS: * on latest.json); static fallback stays if unreachable
+fetch("https://get.groundworkai.io/latest.json").then(r => r.json()).then(m => {
+  var v = m.version || m.name;
+  if (v) document.getElementById("dl-version").textContent = v.replace(/^v/, "");
+}).catch(function () {});
+</script>
+</body>
+</html>

@@ -385,7 +385,7 @@
       out.textContent = "$" + Math.round(dollars).toLocaleString() + "/yr";
       sub.textContent = Math.round(hoursSaved).toLocaleString() +
         " estimator-hours back per year · seat pays for itself " +
-        (dollars > 0 ? Math.max(Math.round(dollars / 950), 0) + "×" : "—") + " over";
+        (dollars > 0 ? Math.max(Math.round(dollars / 590), 0) + "×" : "—") + " over";
     };
     Object.keys(inputs).forEach(function (k) { inputs[k].addEventListener("input", upd); });
     upd();
