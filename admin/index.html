@@ -20,8 +20,12 @@
   .filters { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
   .fbtn { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: var(--ink-dim); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; }
   .fbtn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .stats { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+  .stat { display: flex; align-items: baseline; gap: 9px; padding: 10px 18px; }
+  .stat .n { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .stat .l { font-size: 11px; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .07em; }
   .tlist { display: grid; gap: 10px; }
-  .trow { padding: 16px 20px; display: grid; grid-template-columns: auto 1fr auto auto; gap: 16px; align-items: center; cursor: pointer; transition: border-color .2s; }
+  .trow { padding: 16px 20px; display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 16px; align-items: center; cursor: pointer; transition: border-color .2s; }
   .trow:hover { border-color: rgba(110,161,255,.4); }
   .pill { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
   .st-open { background: rgba(255,69,58,.15); color: #ff8078; }
@@ -32,6 +36,12 @@
   .k-support { background: rgba(110,161,255,.12); color: #9ec2ff; }
   .k-billing { background: rgba(255,214,10,.12); color: #ffe27a; }
   .k-feature { background: rgba(48,209,88,.12); color: #7ce2a0; }
+  .pr-urgent { background: rgba(255,69,58,.18); color: #ff8078; }
+  .pr-high { background: rgba(255,159,10,.15); color: #ffbe55; }
+  .pr-normal { background: rgba(255,255,255,.08); color: var(--ink-dim); }
+  .pr-low { background: rgba(255,255,255,.04); color: var(--ink-faint); }
+  .pillcol { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .src-badge { font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); color: var(--ink-dim); white-space: nowrap; }
   .trow .subj { font-weight: 650; font-size: 15px; }
   .trow .meta { color: var(--ink-faint); font-size: 13px; }
   .detail { padding: 26px; margin-top: 14px; }
@@ -43,6 +53,11 @@
   .msg .who { font-size: 12px; color: var(--ink-faint); margin-bottom: 5px; }
   .detail textarea { width: 100%; min-height: 100px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: var(--ink); font: inherit; font-size: 14px; padding: 12px; margin-top: 16px; }
   .detail select { background: #17171d; border: 1px solid rgba(255,255,255,.15); color: var(--ink); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 13px; }
+  .detail input[type="text"] { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); color: var(--ink); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 13px; }
+  .detail input[type="text"]:focus { outline: none; border-color: var(--accent); }
+  .diag { margin-top: 12px; }
+  .diag summary { cursor: pointer; color: var(--ink-dim); font-size: 13px; font-weight: 600; }
+  .diag pre { background: rgba(255,255,255,.04); border-radius: 10px; padding: 14px; font-size: 12.5px; line-height: 1.5; overflow-x: auto; margin: 8px 0 0; white-space: pre-wrap; word-break: break-word; }
   .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
   .btn-sm { padding: 8px 18px; font-size: 14px; }
   .muted { color: var(--ink-faint); font-size: 13px; }
@@ -79,6 +94,7 @@
       <button class="fbtn" id="refresh">↻ Refresh</button>
       <button class="fbtn" id="logout">Sign out</button>
     </div>
+    <div class="stats" id="stats"></div>
     <div class="tlist" id="tlist"><p class="muted">Loading…</p></div>
     <div id="detail"></div>
   </div>
@@ -130,19 +146,42 @@ async function load() {
   }
   tickets = data; render();
 }
+function renderStats() {
+  const weekAgo = Date.now() - 7 * 864e5;
+  const count = (s) => tickets.filter((t) => t.status === s).length;
+  const closedWeek = tickets.filter((t) => t.status === "closed" && new Date(t.updated_at).getTime() >= weekAgo).length;
+  const chips = [
+    ["Open", count("open")],
+    ["In progress", count("in_progress")],
+    ["Waiting", count("waiting")],
+    ["Closed this week", closedWeek],
+  ];
+  $("stats").innerHTML = chips.map(([l, n]) => `<div class="card stat"><span class="n">${n}</span><span class="l">${esc(l)}</span></div>`).join("");
+}
 function render() {
+  renderStats();
   const rows = tickets.filter((t) =>
     filter === "all" ? true : filter === "active" ? t.status !== "closed" : t.status === filter);
   $("tlist").innerHTML = rows.length ? rows.map((t) => `
     <div class="card trow" data-id="${t.id}">
-      <span class="pill k-${esc(t.kind)}">${esc(t.kind)}</span>
+      <div class="pillcol">
+        <span class="pill k-${esc(t.kind)}">${esc(t.kind)}</span>
+        <span class="pill pr-${esc(t.priority || "normal")}">${esc(t.priority || "normal")}</span>
+      </div>
       <div><div class="subj">${esc(t.subject)}</div>
-        <div class="meta">${esc(t.name || t.email)}${t.company ? " · " + esc(t.company) : ""} · ${esc(t.source)}${t.platform ? " · " + esc(t.platform) : ""}${t.app_version ? " · v" + esc(t.app_version) : ""}</div></div>
+        <div class="meta">${esc(t.name || t.email)}${t.company ? " · " + esc(t.company) : ""}${t.assignee ? " · → " + esc(t.assignee) : ""}${t.platform ? " · " + esc(t.platform) : ""}${t.app_version ? " · v" + esc(t.app_version) : ""}</div></div>
+      <span class="src-badge">${esc(t.source)}</span>
       <span class="meta">${fmt(t.updated_at)}</span>
       <span class="pill st-${esc(t.status)}">${esc(t.status.replace("_", " "))}</span>
     </div>`).join("") : `<p class="muted">Nothing here. Enjoy it while it lasts.</p>`;
   $("tlist").querySelectorAll(".trow").forEach((r) => r.addEventListener("click", () => open(r.dataset.id)));
 }
+const CANNED = {
+  investigating: "Thanks for reaching out — we're looking into this now and treating it as a priority. I'll follow up as soon as we know more. If you have any additional details or a screenshot, feel free to reply with them.",
+  fixed: "Good news — this issue has been fixed and the fix will ship in the next release. I'll follow up here once the update is available to download. Thanks for your patience and for taking the time to report it.",
+  moreinfo: "Thanks for the report — could you share a bit more detail so we can reproduce this on our end? The exact steps you took, what you expected to happen, and a screenshot if possible would help a lot. Once we have that, we'll dig right in.",
+  closing: "We believe this is resolved, so we're closing the ticket for now. If the issue comes back or anything still looks off, just reply to this message and the ticket will reopen. Thanks again for flagging it.",
+};
 async function open(id) {
   current = tickets.find((t) => t.id === id);
   const { data: msgs } = await sb.from("support_messages").select("*").eq("ticket_id", id).order("created_at");
@@ -150,27 +189,54 @@ async function open(id) {
     <div class="card detail">
       <h2>${esc(current.subject)}</h2>
       <div class="meta">${esc(current.name || "")} &lt;${esc(current.email)}&gt;${current.company ? " · " + esc(current.company) : ""}
-        · opened ${fmt(current.created_at)} · ${esc(current.source)}${current.platform ? " · " + esc(current.platform) : ""}${current.app_version ? " · v" + esc(current.app_version) : ""}</div>
+        · opened ${fmt(current.created_at)} · <span class="src-badge">${esc(current.source)}</span>${current.platform ? " · " + esc(current.platform) : ""}${current.app_version ? " · v" + esc(current.app_version) : ""}${current.assignee ? " · assigned to " + esc(current.assignee) : ""}</div>
       <div class="body">${esc(current.body)}</div>
+      ${current.diagnostics ? `<details class="diag"><summary>Diagnostics</summary><pre>${esc(JSON.stringify(current.diagnostics, null, 2))}</pre></details>` : ""}
       ${(msgs || []).map((m) => `<div class="msg staff"><div class="who">${esc(m.author)} · ${fmt(m.created_at)}</div>${esc(m.body)}</div>`).join("")}
       <textarea id="reply" placeholder="Internal reply log — record what you answered (send the actual reply from your email client to ${esc(current.email)})."></textarea>
       <div class="row">
         <button class="btn btn-primary btn-sm" id="send">Log reply</button>
         <a class="btn btn-ghost btn-sm" href="mailto:${esc(current.email)}?subject=${encodeURIComponent("Re: " + current.subject)}">Reply by email</a>
+        <label class="muted">Canned
+          <select id="canned">
+            <option value="">Insert a reply…</option>
+            <option value="investigating">Thanks — investigating</option>
+            <option value="fixed">Fixed in next release</option>
+            <option value="moreinfo">Need more info</option>
+            <option value="closing">Resolved — closing</option>
+          </select></label>
+      </div>
+      <div class="row">
         <label class="muted">Status
           <select id="st">${["open", "in_progress", "waiting", "closed"].map((s) => `<option ${s === current.status ? "selected" : ""}>${s}</option>`).join("")}</select></label>
         <label class="muted">Priority
           <select id="pr">${["low", "normal", "high", "urgent"].map((p) => `<option ${p === current.priority ? "selected" : ""}>${p}</option>`).join("")}</select></label>
+        <label class="muted">Assignee
+          <input id="as" type="text" placeholder="unassigned" value="${esc(current.assignee || "")}" style="min-width:170px;"></label>
+        <a class="fbtn" href="licenses.html#user=${encodeURIComponent(current.email)}">View user →</a>
         <span class="muted" id="saved"></span>
       </div>
     </div>`;
   $("st").addEventListener("change", saveMeta);
   $("pr").addEventListener("change", saveMeta);
+  $("as").addEventListener("change", saveMeta);
+  $("canned").addEventListener("change", () => {
+    const tpl = CANNED[$("canned").value];
+    if (!tpl) return;
+    const box = $("reply");
+    box.value = box.value.trim() ? box.value.replace(/\s+$/, "") + "\n\n" + tpl : tpl;
+    $("canned").value = "";
+    box.focus();
+  });
   $("send").addEventListener("click", sendReply);
   $("detail").scrollIntoView({ behavior: "smooth" });
 }
 async function saveMeta() {
-  const { error } = await sb.from("support_tickets").update({ status: $("st").value, priority: $("pr").value }).eq("id", current.id);
+  const { error } = await sb.from("support_tickets").update({
+    status: $("st").value,
+    priority: $("pr").value,
+    assignee: $("as").value.trim() || null,
+  }).eq("id", current.id);
   $("saved").textContent = error ? "save failed: " + error.message : "saved ✓";
   if (!error) load();
 }

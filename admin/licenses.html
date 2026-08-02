@@ -124,11 +124,17 @@ async function login() {
   if (error) { $("l-err").textContent = error.message; $("l-err").style.display = "block"; return; }
   showApp(data.session);
 }
-function showApp(session) {
+async function showApp(session) {
   $("login").style.display = "none";
   $("app").style.display = "block";
   $("who").textContent = session.user.email;
-  load();
+  await load();
+  // Deep link from the Support Console: licenses.html#user=<email> jumps
+  // straight to that user's profile once the org list has loaded.
+  const m = location.hash.match(/^#user=(.+)$/);
+  if (m) {
+    try { openUser(decodeURIComponent(m[1])); } catch { /* malformed hash — ignore */ }
+  }
 }
 $("logout").addEventListener("click", async () => { await sb.auth.signOut(); location.reload(); });
 $("refresh").addEventListener("click", load);

@@ -737,3 +737,35 @@ body.has-banner .hero { padding-top: calc(var(--nav-h) + var(--banner-h) + clamp
 .article-body .callout { background: rgba(61,123,255,.08); border: 1px solid rgba(61,123,255,.25); border-radius: var(--radius-md); padding: 20px 24px; margin: 1.8em 0; font-size: 16px; }
 .article-cta { background: var(--bg-elev); border: 1px solid rgba(110,161,255,.25); border-radius: var(--radius-lg); padding: 34px; text-align: center; margin: 3em 0 0; }
 .article-meta { font-size: 14px; color: var(--ink-faint); }
+
+/* ============ Knowledge base ============ */
+.kb-cat { margin-bottom: clamp(40px,5vw,60px); }
+.kb-cat h2 { font-size: 22px; letter-spacing: -0.02em; margin: 0 0 16px; display:flex; align-items:center; gap:10px; }
+.kb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.kb-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-md); padding: 20px 22px; transition: transform .3s var(--ease-out), border-color .25s; display: block; }
+.kb-card:hover { transform: translateY(-3px); border-color: rgba(110,161,255,.4); }
+.kb-card h3 { margin: 0 0 6px; font-size: 16.5px; letter-spacing: -0.01em; }
+.kb-card p { margin: 0; color: var(--ink-dim); font-size: 13.5px; line-height: 1.5; }
+.kb-search { width: min(560px, 100%); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: var(--ink); font: inherit; font-size: 16px; padding: 14px 24px; margin: 30px auto 0; display: block; }
+.kb-search:focus { outline: none; border-color: var(--accent); }
+.kb-article { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+.kb-article .crumb { font-size: 13px; color: var(--ink-faint); margin-bottom: 8px; }
+.kb-article .crumb a { color: var(--accent-bright); }
+.kb-article h1 { font-size: clamp(28px,3.6vw,42px); letter-spacing: -0.025em; line-height: 1.15; margin: 8px 0 10px; }
+.kb-meta { font-size: 13px; color: var(--ink-faint); margin-bottom: 26px; }
+.kb-meta .vtag { background: rgba(48,209,88,.14); color: #63de8b; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 999px; letter-spacing: .06em; }
+.kb-body { font-size: 16.5px; line-height: 1.7; color: #c9c9d0; }
+.kb-body h2 { color: var(--ink); font-size: 24px; letter-spacing: -0.02em; margin: 2em 0 .5em; }
+.kb-body h3 { color: var(--ink); font-size: 18px; margin: 1.6em 0 .4em; }
+.kb-body ol, .kb-body ul { padding-left: 1.3em; margin: 0 0 1.1em; }
+.kb-body li { margin-bottom: .5em; }
+.kb-body strong { color: var(--ink); }
+.kb-body kbd { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: 1px 7px; font-size: .85em; font-family: inherit; }
+.kb-body .fig { margin: 1.6em 0; }
+.kb-body .fig img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 16px 50px -16px rgba(0,0,0,.6); }
+.kb-body .fig figcaption { font-size: 13px; color: var(--ink-faint); margin-top: 8px; text-align: center; }
+.kb-body .tip { background: rgba(61,123,255,.08); border: 1px solid rgba(61,123,255,.25); border-radius: var(--radius-md); padding: 16px 20px; margin: 1.4em 0; font-size: 15px; }
+.kb-body .warn { background: rgba(255,159,10,.08); border: 1px solid rgba(255,159,10,.3); border-radius: var(--radius-md); padding: 16px 20px; margin: 1.4em 0; font-size: 15px; }
+.kb-related { margin-top: 3em; padding-top: 1.6em; border-top: 1px solid rgba(255,255,255,.1); }
+.kb-related h2 { font-size: 16px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+.kb-related a { display: block; color: var(--accent-bright); margin-bottom: 8px; font-size: 15px; }
