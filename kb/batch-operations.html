@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch Operations — Groundwork Takeoff Knowledge Base</title>
+<meta name="description" content="The Batch Suite in Groundwork Takeoff: Slip Sheet, Batch OCR, Combine PDFs, Batch Link, Batch Calibrate, Batch Compare, and Run Script — queued jobs across whole plan sets.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/batch-operations.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Batch Operations — Groundwork Takeoff">
+<meta property="og:description" content="Slip-sheet, OCR, combine, link, calibrate, compare, and script across entire plan sets in one queued pass.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/batch-operations.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(24px,3vw,40px);">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Knowledge base</span>
+    <h1 class="display reveal" style="--d:.05s;font-size:clamp(32px,4.5vw,56px)">Batch<br><span class="grad-text">operations</span></h1>
+    <p class="subhead reveal" style="--d:.15s">Anything worth doing to one sheet is worth doing to eighty sheets while you get coffee.</p>
+  </div>
+</header>
+
+<section style="padding-bottom:clamp(70px,9vw,120px);">
+  <div class="kb-article">
+    <div class="kb-body reveal">
+
+      <p>The <strong>Batch Suite</strong> lives in the Batch panel (View tab → panel toggles → Batch; it docks under the Library). Pick an operation, configure it in a short dialog, and it lands in a job queue that runs in the background — you can keep measuring while it works, and cancel a queued job before it starts.</p>
+
+      <img src="../assets/img/screens/batch-panel.webp" alt="The Batch panel docked under the Library, showing the Batch Operations list and the Jobs queue" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+
+      <h2>The seven operations</h2>
+      <ul>
+        <li><strong>Slip Sheet</strong> — swap revised pages into a working set while keeping page order intact. The classic "Addendum 2 replaced sheets A-101 through A-110" chore, done in one pass instead of ten inserts and ten deletes.</li>
+        <li><strong>Batch OCR</strong> — run text recognition across scanned sheets so search, links, and text selection work on drawings that arrived as flat images.</li>
+        <li><strong>Combine PDFs</strong> — merge multiple files into one document, with control over where the incoming pages are inserted.</li>
+        <li><strong>Batch Link</strong> — generate sheet-number hyperlinks across the set, so callouts like "see A-201" become clickable navigation.</li>
+        <li><strong>Batch Calibrate</strong> — apply a scale to a whole page range at once instead of calibrating sheet by sheet. Pages you calibrate individually afterward keep their own override.</li>
+        <li><strong>Batch Compare</strong> — diff a pair of documents page-by-page and produce difference output, so you can sweep a revision for changes before deciding where to spend compare time on the live canvas.</li>
+        <li><strong>Run Script</strong> — run one of your saved automation scripts as a batch job (more below).</li>
+      </ul>
+
+      <h2>How the queue behaves</h2>
+      <ol>
+        <li>Click an operation in the <strong>Batch Operations</strong> list and fill in its configuration dialog (page ranges, source files, output).</li>
+        <li>The job appears in the <strong>Jobs</strong> section with its status. Jobs run one at a time, in order.</li>
+        <li>Queue several jobs back-to-back — slip sheet, then OCR, then link — and let them run as a pipeline.</li>
+      </ol>
+
+      <div class="tip"><strong>Note:</strong> batch operations execute through the native desktop engine, so run them from the desktop app. In the browser build the operation rows appear dimmed.</div>
+
+      <h2>Run Script and the Scripts panel</h2>
+      <p>For anything the built-in operations don't cover, the <strong>Scripts</strong> panel gives you a code editor with autocomplete and a document API — for example, <code>doc.measurements.byTool('area')</code> returns every area takeoff so a nine-line script can total square footage or flag oversize rooms. Save a script once, then run it on demand from the panel or queue it as the <strong>Run Script</strong> batch operation like any other job.</p>
+
+      <img src="../assets/img/screens/scripts-panel.webp" alt="The Scripts panel with a saved Area Summary script open in the code editor" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+
+      <div class="kb-related">
+        <h2>Related articles</h2>
+        <a href="cloud-drive-links.html">Opening plans from cloud drives</a>
+        <a href="shortcuts-and-customization.html">Shortcuts &amp; customization</a>
+        <a href="collaboration-and-offline.html">Working together (and offline)</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(34px,5vw,64px)">Still stuck?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="index.html">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selecting &amp; Editing Measurements — Groundwork Takeoff Knowledge Base</title>
+<meta name="description" content="Click-select, marquee multi-select, the floating selection toolbar, moving and reshaping measurements, one-action-one-undo, and copy/paste in Groundwork Takeoff.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/editing-measurements.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selecting &amp; editing measurements — Groundwork Takeoff">
+<meta property="og:description" content="Click-select, marquee, the floating toolbar, moving and reshaping, and how undo groups your edits into single clean steps.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/editing-measurements.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(26px,3.5vw,44px);">
+  <div class="hero-glow"></div>
+  <div class="article-head wrap">
+    <span class="eyebrow reveal">Knowledge base · Measuring</span>
+    <h1 class="reveal" style="font-size:clamp(32px,4.5vw,54px);letter-spacing:-0.03em;line-height:1.08;font-weight:800;">Selecting &amp; editing&nbsp;measurements</h1>
+    <p class="subhead reveal" style="--d:.1s">Takeoffs change — walls move, scopes shrink, addenda land. Here's how to grab what you drew, fix it fast, and keep undo history clean while you do.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,120px);">
+  <div class="kb-body">
+
+    <h2>Selecting: click or marquee</h2>
+    <p>Switch to the <strong>Select</strong> tool on the Home tab. Click any measurement to select it — it outlines in blue and grows handles, and its row highlights in the Quantity Takeoff tree so you always know which number on the sheet is which number in the totals. To grab several at once, <strong>drag a marquee</strong> over a region: everything inside joins the selection.</p>
+
+    <h2>The floating selection toolbar</h2>
+    <p>The moment you have a selection, a compact toolbar appears anchored right at it — no trip back to the ribbon. It shows a <strong>count badge</strong> (how many items you've got), plus <strong>Lock</strong>, <strong>Delete</strong>, and <strong>Properties…</strong> actions that apply to the whole selection at once.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/selection-toolbar.webp" alt="Floating selection toolbar with a count badge of 10 and Lock, Delete, and Properties actions" width="1280" height="800" loading="lazy">
+      <figcaption>Ten items marquee-selected: the toolbar floats at the selection with count, Lock, Delete, and Properties.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>Lock</strong> protects finished work — locked items can't be nudged out of place while you work around them.</li>
+      <li><strong>Delete</strong> removes the whole selection in one step. <kbd>Delete</kbd> on the keyboard does the same.</li>
+      <li><strong>Properties…</strong> opens the shared properties of everything selected, so you can restyle a batch in one pass.</li>
+    </ul>
+
+    <h2>Moving and reshaping</h2>
+    <p>With an item selected, drag its body to <strong>move</strong> it, or drag an individual <strong>vertex handle</strong> to reshape it — extend a wall run, tighten an area boundary, straighten a sloppy corner. Quantities recompute live as the geometry changes; the tree never goes stale.</p>
+    <p>For deeper surgery, <strong>right-click</strong> a selected measurement. The context menu carries the full editing kit: Delete, <strong>Add point</strong>, <strong>Delete point</strong>, Lock, Group, Properties…, Apply assembly…, and Add to Tool Chest.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/kb-context-menu.webp" alt="Right-click context menu on a selected linear run showing Delete, Add point, Delete point, Lock, Group, Properties, Apply assembly, and Add to Tool Chest" width="1280" height="800" loading="lazy">
+      <figcaption>Right-click a selection: add or delete points, lock, group, restyle, or apply an assembly.</figcaption>
+    </figure>
+
+    <h2>One action, one undo</h2>
+    <p>Undo in Groundwork Takeoff groups by <em>what you meant to do</em>, not by internal steps. Finish a five-vertex run, then hit <kbd>Ctrl</kbd>+<kbd>Z</kbd> — the whole run disappears, not one vertex. Delete ten items with the floating toolbar, undo once, all ten are back. Move, reshape, paste, batch restyle: each is a single clean step. You'll never mash undo eight times to unwind one mistake.</p>
+
+    <h2>Copy and paste</h2>
+    <p>Selections ride the clipboard whole:</p>
+    <ul>
+      <li><kbd>Ctrl</kbd>+<kbd>C</kbd> copies the entire selection.</li>
+      <li><kbd>Ctrl</kbd>+<kbd>V</kbd> pastes it with a small offset — paste repeatedly and each copy steps further, so stacked pastes stay visible and grabbable.</li>
+      <li><kbd>Shift</kbd>+<kbd>V</kbd> pastes <strong>in place</strong>, exactly on top of the original — perfect for duplicating work you're about to restyle.</li>
+      <li>Pasting onto a <strong>different page</strong> lands the items at the same sheet position and re-resolves them against that page's own scale, so quantities stay honest even across pages calibrated differently.</li>
+    </ul>
+
+    <div class="tip"><strong>Tip:</strong> Repeating the same typical unit across a floor? Draw it once, select it, then <kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd> your way down the sheet — every copy is a real, individually editable measurement.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="measurement-tools.html">The six measurement tools</a>
+      <a href="counts-and-ai.html">Counts &amp; AI detection</a>
+      <a href="workspace-tour.html">Workspace tour: ribbon, panels &amp; status bar</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">Edit gone sideways?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

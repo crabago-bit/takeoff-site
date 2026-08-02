@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Six Measurement Tools — Groundwork Takeoff Knowledge Base</title>
+<meta name="description" content="Linear, Perimeter, Area, Volume, Count, and Dimension in Groundwork Takeoff — when to use each, drag-to-draw, and finishing a run with a right-click.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/measurement-tools.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The six measurement tools — Groundwork Takeoff">
+<meta property="og:description" content="Linear, Perimeter, Area, Volume, Count, and Dimension — when to use each, drag-to-draw, and finishing with a right-click.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/measurement-tools.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(26px,3.5vw,44px);">
+  <div class="hero-glow"></div>
+  <div class="article-head wrap">
+    <span class="eyebrow reveal">Knowledge base · Measuring</span>
+    <h1 class="reveal" style="font-size:clamp(32px,4.5vw,54px);letter-spacing:-0.03em;line-height:1.08;font-weight:800;">The six measurement&nbsp;tools</h1>
+    <p class="subhead reveal" style="--d:.1s">Almost everything on a drawing reduces to one of six measurements. Know which tool answers which question and the takeoff nearly does itself.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,120px);">
+  <div class="kb-body">
+
+    <p>All six tools live on the <strong>Home</strong> tab, right after Select. Every measurement you commit gets a subject, lands in the Quantity Takeoff tree, and rolls up into live totals. Here's the lineup.</p>
+
+    <h2>Linear — length along a path</h2>
+    <p>Wall runs, pipe, conduit, curb, baseboard. Click to drop vertices along the path; the running length updates in the label and the status bar as you go. <strong>Right-click to finish.</strong> Reports in linear feet.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/takeoff-linear.webp" alt="Two linear measurements with dimension labels and LF quantities in the takeoff tree" width="1280" height="800" loading="lazy">
+      <figcaption>Two linear runs, each labeled on the sheet and totaled in the tree.</figcaption>
+    </figure>
+
+    <h2>Perimeter — distance around a shape</h2>
+    <p>Slab edge forms, roof edge, fencing. Same drawing motion as Linear, but the shape closes and reports the full distance around it in LF.</p>
+
+    <h2>Area — surface inside a boundary</h2>
+    <p>Flooring, paint, drywall, paving. Click around the boundary; a live SF readout tracks the polygon as it forms, and a tooltip reminds you of the mechanics: click to add vertices, <strong>double-click to close</strong>.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/kb-area-mid-draw.webp" alt="Area polygon mid-draw with a live square-footage label and drawing tooltip" width="1280" height="800" loading="lazy">
+      <figcaption>Mid-draw: three vertices placed, rubber-band to the cursor, live 484.01 ft² readout.</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="../assets/img/screens/takeoff-area.webp" alt="Three committed tinted areas with square-footage chips in distinct colors" width="1280" height="800" loading="lazy">
+      <figcaption>Committed areas render as tinted regions with SF chips — easy to see what's been measured.</figcaption>
+    </figure>
+
+    <h2>Volume — area with depth</h2>
+    <p>Concrete slabs and footings, excavation, fill. Draw it like an area, give it a depth, and it reports cubic quantity. A 112 SF break-room slab becomes yards of ready-mix without leaving the sheet.</p>
+
+    <h2>Count — how many of a thing</h2>
+    <p>Doors, fixtures, receptacles, workstations. One click, one marker, and the tally climbs — all markers under one subject stay grouped in the tree. Counts also power <a href="counts-and-ai.html">AI detection</a> when you'd rather not click 400 times.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/takeoff-count.webp" alt="Nine red count markers over workstations with count rows in the takeoff tree" width="1280" height="800" loading="lazy">
+      <figcaption>Nine workstation markers, nine rows in the tree, one subject.</figcaption>
+    </figure>
+
+    <h2>Dimension — one verified distance</h2>
+    <p>Not a quantity — a check. Snap a Dimension across a room or a grid bay to confirm a width, or to prove the sheet's stated scale is true before you trust it. The quiet workhorse of accurate takeoffs.</p>
+
+    <h2>Drawing mechanics worth knowing</h2>
+    <ul>
+      <li><strong>Click-click or drag-to-draw.</strong> Click to place each vertex, or press and drag to draw in one motion — both work on the drawing tools. Use whichever your hand prefers.</li>
+      <li><strong>Right-click finishes a run.</strong> For multi-point tools, right-click commits what you've drawn. Areas close with a double-click.</li>
+      <li><strong>Subject at commit.</strong> When you finish, Groundwork asks for a subject ("Framing", "Open Office Flooring"). Name things the way your estimate reads — subjects become the rows you'll price.</li>
+      <li><strong>Snap and the status bar.</strong> While drawing, the status bar shows snap state and a live readout of the measurement in progress, so you always know what you're about to commit.</li>
+    </ul>
+    <figure class="fig">
+      <img src="../assets/img/screens/takeoff-measurement.webp" alt="Floor plan with areas, linears, and counts, and a fully populated quantity tree" width="1280" height="800" loading="lazy">
+      <figcaption>All three families on one sheet — 1472 ft², 122 ft, 9 ea rolling up at the project level.</figcaption>
+    </figure>
+
+    <div class="tip"><strong>Tip:</strong> Set the <a href="setting-the-scale.html">page scale</a> before you draw. Everything above depends on it.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="setting-the-scale.html">Setting &amp; calibrating scale (per page)</a>
+      <a href="editing-measurements.html">Selecting &amp; editing measurements</a>
+      <a href="counts-and-ai.html">Counts &amp; AI detection</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">Not sure which tool?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

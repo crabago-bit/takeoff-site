@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setting &amp; Calibrating Scale (Per Page) — Groundwork Takeoff Knowledge Base</title>
+<meta name="description" content="How scale works in Groundwork Takeoff: per-page calibration, the amber Scale Not Set badge, the Set scale dropdown, and calibrating against a known dimension.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/setting-the-scale.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting &amp; calibrating scale (per page) — Groundwork Takeoff">
+<meta property="og:description" content="Per-page calibration, the amber Scale Not Set badge, manual calibration against a known dimension, and why mixed-scale sets stay accurate.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/setting-the-scale.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(26px,3.5vw,44px);">
+  <div class="hero-glow"></div>
+  <div class="article-head wrap">
+    <span class="eyebrow reveal">Knowledge base · Getting started</span>
+    <h1 class="reveal" style="font-size:clamp(32px,4.5vw,54px);letter-spacing:-0.03em;line-height:1.08;font-weight:800;">Setting &amp; calibrating scale (per&nbsp;page)</h1>
+    <p class="subhead reveal" style="--d:.1s">Every quantity in your takeoff is only as good as the scale behind it. Here's how Groundwork Takeoff keeps that honest — one page at a time.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,120px);">
+  <div class="kb-body">
+
+    <h2>Scale is per page — and that matters</h2>
+    <p>Real plan sets mix scales constantly: floor plans at 1/4" = 1'-0", details at 1" = 1'-0", elevations and site plans at something else again. Groundwork Takeoff stores calibration <strong>per page</strong>, so each sheet carries its own scale and your quantities stay correct as you move through the set. Set a scale on page 1 and it does not silently apply to page 7 — each page earns its own.</p>
+
+    <h2>The amber "Scale Not Set" badge</h2>
+    <p>When the current page has no calibration, the status bar shows an amber <strong>Scale Not Set</strong> badge beside the <strong>Set scale…</strong> dropdown. Treat it like a stop sign: measurements need a calibrated page before their numbers mean anything. Notice the cursor readout too — before calibration it reports paper units; after calibration it switches to real-world feet, which is your quickest confirmation that the page is live.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/kb-scale-set.webp" alt="Fresh sheet with the amber Scale Not Set badge and Set scale dropdown in the status bar" width="1280" height="800" loading="lazy">
+      <figcaption>A fresh page before calibration: amber badge, Set scale… dropdown, cursor still in paper units.</figcaption>
+    </figure>
+
+    <h2>Two ways to set it</h2>
+    <ol>
+      <li><strong>Pick the stated scale.</strong> Open <strong>Set scale…</strong> in the status bar and choose the scale printed in the title block — 1/4" = 1'-0" and the other standard architectural and engineering scales are right there. Fastest when you trust the drawing.</li>
+      <li><strong>Calibrate against a known dimension.</strong> Use the calibrate option, click two points spanning something with a printed dimension — a dimensioned wall, a grid bay — and enter the true distance. Groundwork computes the scale from your clicks. This is the safe route for scanned sheets, half-size prints, or any PDF that's been resized on its way to you.</li>
+    </ol>
+    <p>Either way, the status bar then shows the resolved scale label for the page (for example, <em>1pt = 0.05556ft (1/4" = 1'-0")</em>), and the amber badge disappears.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/zoom-status.webp" alt="Status bar after calibration showing cursor position in feet and the resolved scale label" width="1280" height="800" loading="lazy">
+      <figcaption>After calibration: cursor readout in feet, the resolved scale label, and no amber badge.</figcaption>
+    </figure>
+
+    <div class="tip"><strong>Trust, but verify.</strong> Even when the title block states a scale, spot-check it: draw a quick <strong>Dimension</strong> across a printed dimension string and confirm the numbers agree. PDFs get rescaled in the wild more often than anyone admits.</div>
+
+    <h2>What happens on uncalibrated pages</h2>
+    <p>Pages you haven't calibrated keep showing the amber badge — you'll see it, for instance, when you flip from a calibrated floor plan to an elevations sheet you haven't touched yet. The badge is per page, so a calibrated page 1 and an uncalibrated page 3 can coexist without confusing each other. Calibrate each page the first time you need to measure on it.</p>
+
+    <h2>Recalibrating a page</h2>
+    <p>If you discover a page was calibrated wrong, just set it again. Existing measurements on that page recompute to the corrected scale — you don't have to redraw anything. That's the point of keeping scale as live data instead of baking it into each measurement.</p>
+
+    <div class="warn"><strong>Watch for:</strong> a takeoff where one page's quantities look off by a consistent factor (2×, 4×, 96×). That's almost always a scale problem on that page, not a drawing problem — recheck the calibration before you recheck your clicks.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="getting-started.html">Your first takeoff in 10 minutes</a>
+      <a href="measurement-tools.html">The six measurement tools</a>
+      <a href="workspace-tour.html">Workspace tour: ribbon, panels &amp; status bar</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">Scale acting strange?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

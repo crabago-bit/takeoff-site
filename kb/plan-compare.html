@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparing Plan Revisions — Groundwork Takeoff</title>
+<meta name="description" content="Overlay two plan revisions on the live canvas — red is removed, blue is added — align them precisely, and re-measure only what actually changed.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/plan-compare.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Comparing Plan Revisions — Groundwork Takeoff">
+<meta property="og:description" content="Overlay two revisions on the live canvas — red is removed, blue is added — and re-measure only what changed.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/plan-compare.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(24px,3vw,40px);">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow reveal">Knowledge base</span>
+    <h1 class="reveal" style="--d:.05s;font-size:clamp(30px,4.2vw,50px);letter-spacing:-0.03em;line-height:1.1;font-weight:800;">Comparing plan revisions</h1>
+    <p class="subhead reveal" style="--d:.12s">A new revision lands and the question is always the same: what changed? Overlay it on your working sheet and let the colors answer.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,110px);">
+  <div class="kb-body">
+
+    <h2>Overlay, don't eyeball</h2>
+    <p>Plan compare puts two revisions of a sheet on the <strong>live canvas</strong> at once — side A is your current sheet, side B is the revision file you're checking against — and renders the difference in color: <strong>red for what was removed, blue for what was added</strong>. Unchanged linework stays neutral, so a relocated wall reads instantly as a red line (old position) running parallel to a blue line (new position), and a resized room shows its old boundary in red. Even a new note block on the revision jumps out in red or blue instead of hiding in the drawing.</p>
+    <img src="../assets/img/screens/compare-overlay.webp" alt="Plan compare in Difference mode with red and blue diff lines and the floating compare toolbar" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+    <p>Because the overlay runs on the live canvas, your takeoffs, markups, zoom, and panels all stay exactly where they were — compare is a lens over your working sheet, not a separate viewer.</p>
+
+    <h2>Run a comparison</h2>
+    <ol>
+      <li>Open the sheet you want to check — the page indicator in the status bar confirms you're on the right one in a multi-sheet set.</li>
+      <li>Start a compare and pick side B: the revision document (e.g. <em>riverside-plan-set-rev2</em>). Side A is your current sheet.</li>
+      <li>Choose a view mode from the floating compare toolbar: <strong>Blend</strong> to see both sets ghosted together, <strong>Difference</strong> for the red/blue diff, or <strong>Split</strong> to divide the canvas between the two.</li>
+      <li>Use the <strong>threshold slider</strong> to tune sensitivity — raise it to ignore plotter-level noise, lower it to catch fine changes.</li>
+      <li>Wait for <em>"Diff ready"</em> in the toolbar, then walk the sheet red-to-blue.</li>
+    </ol>
+
+    <h2>Get the alignment right</h2>
+    <p>A diff is only as honest as its alignment — two sheets printed a hair offset would otherwise light up everywhere. The compare toolbar shows the current <strong>dx/dy/scale</strong> adjustment, and you can <strong>drag to align</strong> the overlay by hand or hit <strong>Re-align</strong> to let anchor matching do it: the toolbar reports how many anchors were used and the residual error (e.g. "5 anchors, residual 0.00 pt"). When the residual reads near zero, what's colored is genuinely changed — not misregistered.</p>
+
+    <h2>Re-measure only what changed</h2>
+    <p>This is where the overlay pays for itself. Your existing measurements are untouched by the comparison, so there's no need to redo the takeoff. Work through the colored regions: where red shows removed scope, delete or trim the affected measurements; where blue shows added scope, draw the new quantities with the overlay still visible as your guide. On a multi-sheet set like the one below, repeat per affected page — floor plans and elevations each get their own pass.</p>
+    <img src="../assets/img/screens/sheet-a102.webp" alt="A second-floor plan sheet with measured suite areas — one page of a multi-sheet set to compare" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+    <img src="../assets/img/screens/sheet-a201.webp" alt="An exterior elevations sheet from the same plan set" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+    <div class="tip"><strong>Close the loop.</strong> As you reconcile each change, cloud it and drop a revision delta so the record of what moved — and why — lives on the sheet. See <a href="revisions-log.html">Revision clouds &amp; the Revision Log</a>.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="revisions-log.html">Revision clouds &amp; the Revision Log</a>
+      <a href="markup-tools.html">Markup tools &amp; the Tool Chest</a>
+      <a href="batch-operations.html">Batch operations</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">Still stuck?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

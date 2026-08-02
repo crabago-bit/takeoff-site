@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Estimate Grid &amp; Exporting — Groundwork Takeoff</title>
+<meta name="description" content="Read the live estimate grid — Sheet, CSI division, assembly, material lines — choose your columns, set markup, and export to Excel, CSV, or in batch.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/estimate-grid-and-exports.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Estimate Grid &amp; Exporting — Groundwork Takeoff">
+<meta property="og:description" content="Reading the live grid, choosing columns, markup percentage, and exporting to Excel, CSV, or in batch.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/estimate-grid-and-exports.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(24px,3vw,40px);">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow reveal">Knowledge base</span>
+    <h1 class="reveal" style="--d:.05s;font-size:clamp(30px,4.2vw,50px);letter-spacing:-0.03em;line-height:1.1;font-weight:800;">The estimate grid &amp; exporting</h1>
+    <p class="subhead reveal" style="--d:.12s">The grid prices your takeoff as you draw. Learn to read its hierarchy, pick the columns that matter, apply markup, and hand off a bid-ready file.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,110px);">
+  <div class="kb-body">
+
+    <h2>Open the grid</h2>
+    <p>Switch to the <strong>Estimating</strong> ribbon tab and click <strong>Estimate grid</strong>. The grid docks along the bottom of the workspace with the plan still visible above it, so you can watch a row appear the moment a measurement commits. A <strong>Maximize</strong> button expands it when you're in pure review mode. The same ribbon holds the Assembly Library, Assembly Builder, and Materials — everything that feeds the numbers.</p>
+    <img src="../assets/img/screens/ribbon-estimating.webp" alt="Estimating ribbon: Estimate grid, Assembly Library, Assembly Builder, Materials, Send Data, and export buttons" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+
+    <h2>Read the hierarchy</h2>
+    <p>The grid is organized the way an estimate is actually reviewed: <strong>Sheet → CSI division → assembly → material lines</strong>. Expand Sheet 1, then Concrete, then a Break Room Slab assembly, and you'll see the measured quantity (112.00 ft²) break out into its component rows — Ready-Mix at 1.38 CY, rebar at 67.20 LB, vapor barrier at 112 SF, concrete form at 3.70 LF. Every line traces back to a shape on the sheet, and every change to a shape re-prices the lines instantly. No re-typing quantities into a spreadsheet, which is where most estimating errors are born.</p>
+    <img src="../assets/img/screens/panels-estimate.webp" alt="Estimate grid docked at the bottom showing a Sheet, CSI, assembly, and material-line breakdown" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+
+    <h2>Choose your columns</h2>
+    <p>Not every review needs every number. The grid's <strong>column toggles</strong> let you show or hide Qty, Unit, Material Unit, Material Ext, Labor Hrs, Labor Rate, Labor Ext, Waste %, Markup %, and Total. A quantity check might only need Qty and Unit; a bid review wants the full extension chain. Toggle down to the layout that answers the question in front of you.</p>
+
+    <h2>Set your markup</h2>
+    <p>The <strong>Markup %</strong> field applies your margin on top of the extended material and labor costs — set it to 15 and the Total column reflects it across the estimate. Adjust it while you review and watch the totals move; the underlying quantities and unit costs stay untouched.</p>
+
+    <h2>Export the estimate</h2>
+    <p>When the numbers are right, get them out:</p>
+    <ol>
+      <li><strong>Export Excel</strong> or <strong>Export CSV</strong> — available right on the grid and on the Estimating ribbon. Excel is the format most GCs and accounting workflows expect; CSV drops cleanly into any other system.</li>
+      <li><strong>Batch export</strong> — click Batch export on the ribbon to open a dialog with checkboxes for your projects. Tick what you need, choose CSV or Excel, and export several estimates in one pass instead of opening each project in turn.</li>
+    </ol>
+    <img src="../assets/img/screens/kb-export-menu.webp" alt="Batch Export dialog with project checkboxes and CSV / Excel export buttons" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+    <div class="tip"><strong>Exports follow your columns.</strong> Trim the grid to the columns your bid sheet needs before exporting and the file lands ready to forward — no cleanup pass in a spreadsheet.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="assemblies-and-library.html">Assemblies &amp; the materials library</a>
+      <a href="markups-list-grid.html">The markups list: filter, total, jump</a>
+      <a href="batch-operations.html">Batch operations</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">Still stuck?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assemblies &amp; the Materials Library — Groundwork Takeoff</title>
+<meta name="description" content="Arm a priced assembly from the CSI-organized library, draw the measurement, and watch it break down into material and labor lines automatically.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/assemblies-and-library.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Assemblies &amp; the Materials Library — Groundwork Takeoff">
+<meta property="og:description" content="Arm an assembly so every measurement prices itself — materials, labor, and waste in one draw.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/assemblies-and-library.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(24px,3vw,40px);">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow reveal">Knowledge base</span>
+    <h1 class="reveal" style="--d:.05s;font-size:clamp(30px,4.2vw,50px);letter-spacing:-0.03em;line-height:1.1;font-weight:800;">Assemblies &amp; the materials library</h1>
+    <p class="subhead reveal" style="--d:.12s">Arm an assembly before you draw, and every measurement comes off the sheet already priced — materials, labor, and waste in one motion.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,110px);">
+  <div class="kb-body">
+
+    <h2>Where the library lives</h2>
+    <p>The <strong>Library</strong> panel sits in the right dock, just below the Quantity Takeoff tree. It's your catalog of priced assemblies, grouped by <strong>CSI division</strong> — concrete under 03, finishes under 09, and so on. Each row is a complete recipe: the materials, consumption rates, waste factors, and labor that go into one unit of measured work. If the panel isn't visible, turn it on from the View tab's panel toggles.</p>
+    <img src="../assets/img/screens/panels-takeoff.webp" alt="Quantity Takeoff tree docked above the Library assemblies catalog" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+
+    <h2>Arm an assembly, then draw</h2>
+    <p>The core workflow is two steps: arm, then draw. Arming tells Groundwork Takeoff "the next thing I measure is this scope of work."</p>
+    <ol>
+      <li>Find the assembly in the Library — say, <em>Luxury Vinyl Tile (LVT) flooring — glue-down installation</em>.</li>
+      <li>Click the green <strong>▶ arm button</strong> on its row. A green banner appears across the top of the canvas: <em>"Armed: … — draw to place,"</em> with a Cancel button if you change your mind.</li>
+      <li>Draw the measurement with whichever tool fits the scope — trace the room with the Area tool, run a wall with Linear, or drop Count markers.</li>
+      <li>When you commit the shape, it lands in the takeoff tree already attached to the assembly — quantity, materials, and labor priced from the recipe.</li>
+    </ol>
+    <img src="../assets/img/screens/kb-assembly-arm.webp" alt="Library panel with an armed assembly and the green Armed banner ready to draw" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+    <div class="tip"><strong>Already drew it?</strong> You don't have to re-measure. Right-click any existing measurement and choose <strong>Apply assembly…</strong> to attach a recipe after the fact.</div>
+
+    <h2>One measurement, a full breakdown</h2>
+    <p>In the Quantity Takeoff tree, an assembly-backed measurement isn't a single line — it expands into its <strong>material and labor children</strong>, each converted to its own unit. Draw a 112 SF break-room slab against a concrete assembly and the tree shows Ready-Mix in cubic yards, rebar in pounds, and vapor barrier in square feet underneath it. An LVT room breaks down into flooring, adhesive, and leveling; a paint scope into primer and finish coats. The conversion math runs the moment the shape commits, and the same breakdown flows straight into the estimate grid.</p>
+
+    <h2>Name it with the Subject prompt</h2>
+    <p>As a measurement commits, the <strong>Subject</strong> modal asks what you just measured — e.g. Framing, Door, Window, or something project-specific like "Open Office Flooring." Type a name and click OK. That subject is how the row reads in the takeoff tree, the markups list, and your exports, so a few keystrokes here saves you hunting through anonymous shapes later.</p>
+    <img src="../assets/img/screens/kb-subject-modal.webp" alt="Subject prompt modal at commit time with a name typed in" style="width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.08);margin:18px 0">
+    <div class="tip"><strong>Consistent subjects pay off.</strong> Reuse the same names across sheets and the takeoff tree rolls quantities up cleanly — and filtering in the markups list becomes a one-word search.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="estimate-grid-and-exports.html">The estimate grid &amp; exporting</a>
+      <a href="measurement-tools.html">The six measurement tools</a>
+      <a href="markup-tools.html">Markup tools &amp; the Tool Chest</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">Still stuck?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>

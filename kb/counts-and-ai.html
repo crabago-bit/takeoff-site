@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counts &amp; AI Detection — Groundwork Takeoff Knowledge Base</title>
+<meta name="description" content="Placing count markers in Groundwork Takeoff, running AI Detect across a sheet, the review-and-approve workflow, and region-scoped AI tracing for linear runs.">
+<link rel="canonical" href="https://takeoff.groundworkai.io/kb/counts-and-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Counts &amp; AI detection — Groundwork Takeoff">
+<meta property="og:description" content="Count markers, AI-proposed counts across the sheet, and the review-and-approve workflow that keeps you in charge of every quantity.">
+<meta property="og:image" content="https://takeoff.groundworkai.io/assets/img/og-home.jpg">
+<meta property="og:url" content="https://takeoff.groundworkai.io/kb/counts-and-ai.html">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css?v=4">
+<script defer src="https://analytics.groundworkai.io/script.js" data-website-id="cdcf76c3-964b-4c69-b546-e650c6b93ded"></script>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="../assets/img/logo.png" alt="" width="22" height="22">Groundwork&nbsp;Takeoff</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">≡</button>
+    <div class="nav-links">
+      <a href="../features.html">Features</a>
+      <a href="../compare/">Compare</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../blog/">Blog</a>
+      <a href="../support.html">Support</a>
+      <a href="https://app.groundworkai.io">Sign in</a>
+      <a class="nav-cta" href="https://app.groundworkai.io">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(26px,3.5vw,44px);">
+  <div class="hero-glow"></div>
+  <div class="article-head wrap">
+    <span class="eyebrow reveal">Knowledge base · Measuring</span>
+    <h1 class="reveal" style="font-size:clamp(32px,4.5vw,54px);letter-spacing:-0.03em;line-height:1.08;font-weight:800;">Counts &amp; AI&nbsp;detection</h1>
+    <p class="subhead reveal" style="--d:.1s">Counting is the most repetitive work in a takeoff — and the easiest to hand to AI, as long as a human stays in charge of the final number. Here's both halves.</p>
+  </div>
+</header>
+
+<article class="kb-article" style="padding-bottom:clamp(70px,9vw,120px);">
+  <div class="kb-body">
+
+    <h2>Counting by hand</h2>
+    <p>The <strong>Count</strong> tool on the Home tab is one-click-one-marker: pick the tool, click each fixture, and every click drops a numbered marker and bumps the tally. Markers under the same subject stay grouped in the Quantity Takeoff tree, so "Workstations ×9" reads as one line with nine sheet locations behind it. For a dozen items, hand-counting is still the fastest thing in the app.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/takeoff-count.webp" alt="Nine red count markers over an open office area with matching count rows in the takeoff tree" width="1280" height="800" loading="lazy">
+      <figcaption>Nine markers, one subject, nine rows in the tree — every count traceable to a spot on the sheet.</figcaption>
+    </figure>
+
+    <h2>Before you use AI: bring a key</h2>
+    <p>AI Detect runs on Google's Gemini models using <strong>your own API key</strong>, which you paste in under <strong>Settings → General → AI</strong>. There's no per-seat AI surcharge from us — usage bills directly to your Google account at their rates, and you keep full control of the spend. Until a key is configured, the AI features simply sit idle.</p>
+
+    <h2>Running AI Detect</h2>
+    <p><strong>AI Detect</strong> lives at the right end of the Home ribbon. Tell it what you're counting, and it works the sheet <strong>in tiles</strong> — slicing the drawing into overlapping regions and scanning each one — so a symbol in the far corner of an E-size sheet gets the same scrutiny as one dead center.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/ribbon-home.webp" alt="Home ribbon with the AI Detect button at the right end of the tool cluster" width="1280" height="800" loading="lazy">
+      <figcaption>AI Detect sits on the Home ribbon, right after the manual tools it accelerates.</figcaption>
+    </figure>
+    <p>Out of the box, <strong>AI Detect proposes counts</strong> — doors, fixtures, receptacles, piers, anything that repeats as a symbol. It does not draw your areas or volumes; those stay yours.</p>
+
+    <h2>Review and approve</h2>
+    <p>Every detection carries a confidence score, and the workflow is built around your judgment:</p>
+    <ol>
+      <li>Detections at <strong>85% confidence or higher are auto-accepted</strong> and placed as count markers immediately.</li>
+      <li>Lower-confidence finds are <strong>flagged for review</strong> instead of silently counted.</li>
+      <li>The review panel gives you three levers: <strong>Accept all</strong>, <strong>Accept high-confidence</strong>, and <strong>Reject flagged</strong> — sweep the obvious ones in, throw the doubtful ones out, and spot-check anything in between.</li>
+    </ol>
+    <p>Accepted detections become ordinary count markers — same tree rows, same editing, same undo as if you'd clicked them yourself. And if a run finds nothing, you'll get a status message saying so; no news is displayed news, never a silent shrug.</p>
+
+    <h2>AI for linear work: trace runs</h2>
+    <p>Counting isn't the only repetitive job. For linear scope, drag the region-scoped <strong>"AI: trace runs"</strong> marquee over a portion of the sheet and the AI proposes linear runs within just that region — useful for dense corridors of partition or long conduit and pipe routes. Scoping to a region keeps the results focused and quick to review.</p>
+
+    <div class="tip"><strong>Good practice:</strong> run AI Detect one symbol type at a time and reconcile against the legend as you go. AI does the clicking; you still own the quantity that hits the bid.</div>
+
+    <div class="kb-related">
+      <h2>Related articles</h2>
+      <a href="measurement-tools.html">The six measurement tools</a>
+      <a href="editing-measurements.html">Selecting &amp; editing measurements</a>
+      <a href="getting-started.html">Your first takeoff in 10 minutes</a>
+    </div>
+
+  </div>
+</article>
+
+<section class="section-pad cta-band">
+  <div class="wrap">
+    <h2 class="display reveal" style="font-size:clamp(30px,4.5vw,54px)">AI not behaving?</h2>
+    <p class="subhead reveal" style="--d:.1s">A human answers support tickets — usually the same day.</p>
+    <div class="hero-ctas reveal" style="--d:.2s">
+      <a class="btn btn-primary btn-lg" href="../support.html">Contact support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-legal" style="border-top:none;padding-top:0;">
+      <span>© <span data-year>2026</span> Groundwork AI. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="./">Knowledge base</a> · <a href="../support.html">Support</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js?v=4"></script>
+</body>
+</html>
