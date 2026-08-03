@@ -58,6 +58,10 @@
 
     <h2>Before you use AI: bring a key</h2>
     <p>AI Detect runs on Google's Gemini models using <strong>your own API key</strong>, which you paste in under <strong>Settings → General → AI</strong>. There's no per-seat AI surcharge from us — usage bills directly to your Google account at their rates, and you keep full control of the spend. Until a key is configured, the AI features simply sit idle.</p>
+    <figure class="fig">
+      <img src="../assets/img/screens/kb-settings-ai.webp" alt="Settings dialog, General / AI section, with the Gemini API Key field, a Get a free key link, and the Detection model field" width="1280" height="800" loading="lazy">
+      <figcaption>Settings → General / AI: paste your Gemini key (stored only on this computer) and, if Google ever renames the model, update the Detection model field without waiting for an app update.</figcaption>
+    </figure>
 
     <h2>Running AI Detect</h2>
     <p><strong>AI Detect</strong> lives at the right end of the Home ribbon. Tell it what you're counting, and it works the sheet <strong>in tiles</strong> — slicing the drawing into overlapping regions and scanning each one — so a symbol in the far corner of an E-size sheet gets the same scrutiny as one dead center.</p>
@@ -74,6 +78,10 @@
       <li>Lower-confidence finds are <strong>flagged for review</strong> instead of silently counted.</li>
       <li>The review panel gives you three levers: <strong>Accept all</strong>, <strong>Accept high-confidence</strong>, and <strong>Reject flagged</strong> — sweep the obvious ones in, throw the doubtful ones out, and spot-check anything in between.</li>
     </ol>
+    <figure class="fig">
+      <img src="../assets/img/screens/kb-ai-review.webp" alt="AI Detections review panel over a foundation plan: 32 proposals grouped by subject with Accept all, Accept high-confidence, Reject all, and Reject flagged buttons, and proposal markers on each detected pier symbol" width="1280" height="800" loading="lazy">
+      <figcaption>A real review pass on a foundation plan: 30 concrete piers proposed (29 high-confidence), each marker sitting on its symbol, waiting for your Accept.</figcaption>
+    </figure>
     <p>Accepted detections become ordinary count markers — same tree rows, same editing, same undo as if you'd clicked them yourself. And if a run finds nothing, you'll get a status message saying so; no news is displayed news, never a silent shrug.</p>
 
     <h2>AI for linear work: trace runs</h2>
